@@ -84,9 +84,10 @@ public class MainActivity extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             int please = getArguments().getInt(ARG_SECTION_NUMBER);
             Log.e("section",please+"");
-            View rootView = inflater.inflate(R.layout.fragment_start, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            Fragment[] views = {new StartFragment(), new AutoFragment()};
+            View rootView = views[getArguments().getInt(ARG_SECTION_NUMBER)-1].onCreateView(inflater,container,savedInstanceState);
+//            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -106,7 +107,7 @@ public class MainActivity extends Activity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Override
