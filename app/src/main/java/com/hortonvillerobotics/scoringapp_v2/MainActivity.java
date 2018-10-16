@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,8 +81,9 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            int please = getArguments().getInt(ARG_SECTION_NUMBER);
+            Log.e("section",please+"");
             View rootView = inflater.inflate(R.layout.fragment_start, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
@@ -104,7 +106,6 @@ public class MainActivity extends Activity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 3;
         }
 
