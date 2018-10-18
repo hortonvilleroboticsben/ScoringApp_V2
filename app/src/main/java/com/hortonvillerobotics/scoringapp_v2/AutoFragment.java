@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 
-public class AutoFragment extends Fragment {
+public class AutoFragment extends TitledFragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -15,11 +16,16 @@ public class AutoFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_auto, container, false);
 
-        SeekBar s = (SeekBar)v.findViewById(R.id.seekBar);
-        FillUpImage f = (FillUpImage)v.findViewById(R.id.fillUpImage);
-
-        f.pairSeekBar(s);
+//        SeekBar s = (SeekBar)v.findViewById(R.id.seekBar);
+//        FillUpImage f = (FillUpImage)v.findViewById(R.id.fillUpImage);
+//        s.setMax(10);
+//        f.pairSeekBar(s);
 
         return v;
+    }
+
+    @Override
+    String getPageTitle() {
+        return "Autonomous";
     }
 }
