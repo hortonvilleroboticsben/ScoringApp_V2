@@ -29,7 +29,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="20dp"
         android:text="Hanging"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <Switch
         android:id="@+id/CubeSwitch"
@@ -37,9 +37,9 @@
         android:layout_height="70dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:text="Knocked Off Cube"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <Switch
         android:id="@+id/IconSwitch"
@@ -47,9 +47,9 @@
         android:layout_height="70dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:text="Team Icon Placed"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <Switch
         android:id="@+id/ParkSwitch"
@@ -58,6 +58,6 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:text="Parked In Crater"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
 </LinearLayout>
