@@ -10,16 +10,9 @@ import android.widget.SeekBar;
 public class AutoFragment extends TitledFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_auto, container, false);
-
-//        SeekBar s = (SeekBar)v.findViewById(R.id.seekBar);
-//        FillUpImage f = (FillUpImage)v.findViewById(R.id.fillUpImage);
-//        s.setMax(10);
-//        f.pairSeekBar(s);
 
         return v;
     }
