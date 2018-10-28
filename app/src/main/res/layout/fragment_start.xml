@@ -9,15 +9,12 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editText2"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Match Number"
-        android:inputType="textPersonName"
-        android:textSize="32sp" />
+        android:inputType="number" />
 
     <Spinner
         android:id="@+id/TeamName"
