@@ -16,7 +16,7 @@ public class FillUpImage extends ImageView {
 
     public FillUpImage(Context context) {
         super(context);
-        img = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
+        img = Bitmap.createBitmap(getWidth() < 1 ? 50 : getWidth(), getHeight() < 1 ? 50 : getHeight(), Bitmap.Config.ARGB_8888);
         img.setPixel(img.getWidth()/2, img.getHeight()/2, Color.RED);
         this.setImageBitmap(img);
         changePercentFilled(0);

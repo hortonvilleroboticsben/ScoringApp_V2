@@ -25,8 +25,10 @@ import android.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    static TitledFragment[] views = {new StartFragment(), new AutoFragment()};
+    static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
+
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
+
+        db = Database.getInstance();
+        Log.d("MainActivity","Val is: " + db.val);
+        db.val = 12;
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);

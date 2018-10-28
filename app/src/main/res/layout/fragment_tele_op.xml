@@ -11,8 +11,26 @@
         android:layout_width="230dp"
         android:layout_height="29dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="128dp"
         android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
+        android:id="@+id/SilverFillUpImage"
+        android:layout_width="36dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
+        android:id="@+id/GoldFillUpImage"
+        android:layout_width="36dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="152dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +39,7 @@
         android:layout_width="230dp"
         android:layout_height="32dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="224dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +48,7 @@
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="340dp"
         android:text="In Crater"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +59,7 @@
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="392dp"
         android:text="Completely In Crater"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,44 +70,58 @@
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="440dp"
         android:text="Hanging"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25dp" />
+        tools:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="253dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="66dp"
+        android:id="@+id/Tele-OpText"
+        android:layout_width="257dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:text="Tele-Op"
         android:textAlignment="center"
-        android:textSize="36dp"
+        android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/EndGameText"
+        android:layout_width="257dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="276dp"
+        android:text="Endgame"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SilverText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="180dp"
         android:text="Silver"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25dp" />
+        tools:textColor="@android:color/black"
+        tools:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/GoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="84dp"
         android:text="Gold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25dp" />
+        tools:textColor="@android:color/black"
+        tools:textSize="25sp" />
 
 </android.support.constraint.ConstraintLayout>
