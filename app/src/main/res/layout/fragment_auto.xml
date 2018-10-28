@@ -15,49 +15,49 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="Autonomous"
-        android:textAlignment="center"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        tools:textColor="@android:color/black" />
 
     <Switch
         android:id="@+id/HangingSwitch"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
         android:text="Hanging"
         android:textSize="30sp" />
 
     <Switch
         android:id="@+id/CubeSwitch"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
         android:text="Knocked Off Cube"
         android:textSize="30sp" />
 
     <Switch
         android:id="@+id/IconSwitch"
-        android:layout_width="327dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="220dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
         android:text="Team Icon Placed"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
     <Switch
-        android:id="@+id/switch6"
-        android:layout_width="327dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="284dp"
+        android:id="@+id/ParkSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:text="Parked In Crater"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
 </LinearLayout>

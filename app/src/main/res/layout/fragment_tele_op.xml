@@ -1,127 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity$PlaceholderFragment"
+    android:orientation="vertical">
 
-    <SeekBar
-        android:id="@+id/GoldFill"
-        android:layout_width="230dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="128dp"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/TeleOpTitle"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:text="TeleOp"
+        android:textSize="38sp"
+        tools:textAlignment="center"
+        tools:textColor="@android:color/black" />
 
-    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-        android:id="@+id/SilverFillUpImage"
-        android:layout_width="36dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="228dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/GoldText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Gold"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="27sp"/>
 
-    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-        android:id="@+id/GoldFillUpImage"
-        android:layout_width="36dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="152dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/GoldSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
-    <SeekBar
-        android:id="@+id/SilverFill"
-        android:layout_width="230dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="224dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <SeekBar
+            android:id="@+id/GoldFill"
+            android:layout_width="225dp"
+            android:layout_height="match_parent" />
+
+        <com.hortonvillerobotics.scoringapp_v2.FillUpImage
+            android:id="@+id/GoldFillUpImage"
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/SilverText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Silver"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:id="@+id/SilverSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/SilverFill"
+            android:layout_width="225dp"
+            android:layout_height="match_parent" />
+
+        <com.hortonvillerobotics.scoringapp_v2.FillUpImage
+            android:id="@+id/SilverFillUpImage"
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/EndGameText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Endgame"
+        android:textSize="38sp"
+        tools:textColor="@android:color/black" />
+
+    <Switch
+        android:id="@+id/Hanging"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="Hanging"
+        android:textSize="27sp" />
 
     <Switch
         android:id="@+id/InCrater"
         android:layout_width="306dp"
         android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="In Crater"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25sp" />
+        android:textSize="27sp" />
 
     <Switch
         android:id="@+id/CompletelyInCrater"
         android:layout_width="306dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="392dp"
+        android:layout_height="70dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Completely In Crater"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25sp" />
+        android:textSize="27sp" />
 
-    <Switch
-        android:id="@+id/Hanging"
-        android:layout_width="306dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="440dp"
-        android:text="Hanging"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25sp" />
-
-    <TextView
-        android:id="@+id/Tele-OpText"
-        android:layout_width="257dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
-        android:text="Tele-Op"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/EndGameText"
-        android:layout_width="257dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="276dp"
-        android:text="Endgame"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/SilverText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="180dp"
-        android:text="Silver"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@android:color/black"
-        tools:textSize="25sp" />
-
-    <TextView
-        android:id="@+id/GoldText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="84dp"
-        android:text="Gold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@android:color/black"
-        tools:textSize="25sp" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
