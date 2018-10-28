@@ -15,10 +15,10 @@
     </android.support.v4.view.ViewPager>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/SubmitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_weight="10"/>
+        android:layout_weight="10"
+        android:text="Submit" />
 
 </LinearLayout>
