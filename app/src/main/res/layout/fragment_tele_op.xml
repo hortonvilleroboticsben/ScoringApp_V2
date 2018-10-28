@@ -56,7 +56,7 @@
         android:text="Hanging"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="25sp" />
+        tools:textSize="25dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -66,29 +66,9 @@
         android:layout_marginTop="16dp"
         android:text="Tele-Op"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-        android:id="@+id/fillUpImage"
-        android:layout_width="34dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="308dp"
-        android:layout_marginTop="248dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_dark" />
-
-    <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-        android:id="@+id/fillUpImage2"
-        android:layout_width="34dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="308dp"
-        android:layout_marginTop="148dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_dark" />
 
     <TextView
         android:id="@+id/textView4"
