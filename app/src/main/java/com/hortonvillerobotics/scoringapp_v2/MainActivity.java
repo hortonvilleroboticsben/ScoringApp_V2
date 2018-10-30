@@ -8,6 +8,10 @@ import android.app.FragmentTransaction;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -19,17 +23,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
+
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Iterator;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
-
-    //Database db;
-
+    SharedPreferences pM;
+    Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,22 +56,32 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
-
-        //db = Database.getInstance();
-        //Log.d("MainActivity","Val is: " + db.val);
-        //db.val = 12;
-
+        pM = PreferenceManager.getDefaultSharedPreferences(this);
+        submit = (Button)findViewById(R.id.SubmitButton);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
+                String[] results = new String[10];
+                results[0] = ""+StartFragment.matchNumber;
+                results[1] = StartFragment.teams.getSelectedItem().toString();
+                results[2] = AutoFragment.hanging.isChecked()+"";
+                results[3] = AutoFragment.goldCube.isChecked()+"";
+                results[4] = AutoFragment.teamIcon.isChecked()+"";
+                results[5] = AutoFragment.parkedCrater.isChecked()+"";
+                results[6] = (double)TeleOpFragment.gold.getProgress()/TeleOpFragment.gold.getMax()+"";
+                results[7] = (double)TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax()+"";
+                //results[8] depo
+                //results[9] endPos
+                Database.getInstance().commitToDatabase(results);
+            }
+
+        }   );
     }
 
-//    @Override
-//    public boolean onMenuItemSelected(MenuItem item) {
-//        if(item.getItemId() == R.id.action_settings){
-//            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-//        }
-//        return super.onContextItemSelected(item);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,4 +147,105 @@ public class MainActivity extends AppCompatActivity {
             return views[position].getPageTitle();
         }
     }
+
+//    public class SendRequest extends AsyncTask<String, Void, String> {
+//
+//
+//        protected void onPreExecute(){}
+//
+//        protected String doInBackground(String... arg0) {
+//
+//            try{
+//
+//                String gie = pM.getString(getString(R.string.gie), "");
+//
+//                URL url = new URL("https://script.google.com/macros/d/MAcVajrwTLWBuILd4kSWqPWKLfJIYyY8Y/edit?uiv=2&mid=ACjPJvHRsK6LSZfrzwYj359tvH57SYd9ylX3sg2J1vr9T9pFHMHwu_utcDL6wJAdqwvn8PTi0eiwJNH_MwX0tI2Dj8d5ymIF7IfqIZ8dNi0hYVcE3N3ucNXgKcSrPaxbNPqqHP1PcyzTLEY");
+//                JSONObject postDataParams = new JSONObject();
+//                String id= gie;//"14DoM0-EFK_oKTBs1sgPWpb5_Lb9PVxKGNuI44nqNT3Y";
+//
+//                String[] parameters = {"team","hanging","teamIcon","goldCube","parkedCrater",
+//                "goldTele","silverTele","inCrater","completeCrater","endHanging"};
+//
+//                for(int i = 0; i < parameters.length; i++) {
+////                    postDataParams.put(parameters[i],results[i]);
+//                }
+//                postDataParams.put("id",id);
+//
+//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                conn.setReadTimeout(15000 /* milliseconds */);
+//                conn.setConnectTimeout(15000 /* milliseconds */);
+//                conn.setRequestMethod("POST");
+//                conn.setDoInput(true);
+//                conn.setDoOutput(true);
+//
+//                OutputStream os = conn.getOutputStream();
+//                BufferedWriter writer = new BufferedWriter(
+//                        new OutputStreamWriter(os, "UTF-8"));
+//                writer.write(getPostDataString(postDataParams));
+//
+//                writer.flush();
+//                writer.close();
+//                os.close();
+//
+//                int responseCode=conn.getResponseCode();
+//
+//                if (responseCode == HttpsURLConnection.HTTP_OK) {
+//
+//                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    StringBuffer sb = new StringBuffer("");
+//                    String line="";
+//
+//                    while((line = in.readLine()) != null) {
+//
+//                        sb.append(line);
+//                        break;
+//                    }
+//
+//                    in.close();
+//                    return sb.toString();
+//
+//                }
+//                else {
+//                    return new String("false : "+responseCode);
+//                }
+//            }
+//            catch(Exception e){
+//                return new String("Exception: " + e.getMessage());
+//            }
+//        }
+//        @Override
+//        protected void onPostExecute(String result) {
+//            Toast.makeText(getApplicationContext(), "SUCCESS",
+//                    Toast.LENGTH_LONG).show();
+//
+//            finish();
+//            startActivity(getIntent());
+//        }
+//    }
+//
+//    public String getPostDataString(JSONObject params) throws Exception {
+//
+//        StringBuilder result = new StringBuilder();
+//        boolean first = true;
+//
+//        Iterator<String> itr = params.keys();
+//
+//        while(itr.hasNext()){
+//
+//            String key= itr.next();
+//            Object value = params.get(key);
+//
+//            if (first)
+//                first = false;
+//            else
+//                result.append("&");
+//
+//            result.append(URLEncoder.encode(key, "UTF-8"));
+//            result.append("=");
+//            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+//
+//        }
+//        return result.toString();
+//    }
+
 }
