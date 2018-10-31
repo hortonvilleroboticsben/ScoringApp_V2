@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
-    SharedPreferences pM;
+    public String[] results = new String[10];
     Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
-        pM = PreferenceManager.getDefaultSharedPreferences(this);
         submit = (Button)findViewById(R.id.SubmitButton);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
-                String[] results = new String[10];
                 results[0] = ""+StartFragment.matchNumber;
                 results[1] = StartFragment.teams.getSelectedItem().toString();
                 results[2] = AutoFragment.hanging.isChecked()+"";
@@ -74,9 +72,12 @@ public class MainActivity extends AppCompatActivity {
                 results[5] = AutoFragment.parkedCrater.isChecked()+"";
                 results[6] = (double)TeleOpFragment.gold.getProgress()/TeleOpFragment.gold.getMax()+"";
                 results[7] = (double)TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax()+"";
-                //results[8] depo
-                //results[9] endPos
+                results[8] = "this is suppose to be the depo score";
+                results[9] = "this is suppose to be the end position for the robot";
                 Database.getInstance().commitToDatabase(results);
+
+                Intent serviceIntent = new Intent("PushToGoogleService");
+                startService(serviceIntent);
             }
 
         }   );

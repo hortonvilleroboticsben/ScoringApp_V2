@@ -1,14 +1,16 @@
 package com.hortonvillerobotics.scoringapp_v2;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
+import java.util.Currency;
 import java.util.HashMap;
 
 public class Database {
     private static Database db;
-    private SQLiteDatabase database;
+    public SQLiteDatabase database;
     
     private Database(){
         database = SQLiteDatabase.openOrCreateDatabase("matchRecords", null);
@@ -27,5 +29,6 @@ public class Database {
         }
         elementEntry = elementEntry.substring(0,elementEntry.length()-1)+")";
         database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,haning,autoDebris,icon,autoCrater,gold,silver,depot,endPos) VALUES "+elementEntry);
+
     }
 }

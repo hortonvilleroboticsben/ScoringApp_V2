@@ -3,5 +3,5 @@
     <string name="title_activity_main">Autonomous</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="gie">sheetID</string>
+    <string name="sheetID">sheetID</string>
 </resources>
