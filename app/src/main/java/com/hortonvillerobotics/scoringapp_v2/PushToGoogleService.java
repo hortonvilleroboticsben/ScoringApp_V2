@@ -32,7 +32,7 @@ public class PushToGoogleService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        Cursor c = Database.getInstance().database.query("Matches", null, null, null, null, null, null);
+        Cursor c = Database.getInstance(getApplicationContext()).database.query("Matches", null, null, null, null, null, null);
         while (c.getPosition() < c.getCount()) {
             c.moveToNext();
             try {
@@ -41,13 +41,13 @@ public class PushToGoogleService extends IntentService {
 
                 URL url = new URL("https://script.google.com/a/hortonvillerobotics.com/macros/s/AKfycbzSukoOXFOX1jKz3rp7MDyrG_czuIuk6zeoA-3iNLy1AH4KD58/exec");
                 JSONObject postDataParams = new JSONObject();
-                String id = sheetID;//"14DoM0-EFK_oKTBs1sgPWpb5_Lb9PVxKGNuI44nqNT3Y";
+                String id = "1Fu9qCjgzlClW2OxjeJrEjVGu9MaaW93NaMcrojPdQpQ";
 
-                String[] parameters = {"matchNumber", "teamNumber","Hanging","goldCube","teamIcon"
-                ,"parkedCrater","goldFilled","silverFilled","depoScore","endPosition"};
+                String[] parameters = {"matchNumber", "teamNumber", "Hanging", "goldCube", "teamIcon"
+                        , "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
 
                 for (int i = 0; i < parameters.length; i++) {
-                    postDataParams.put(parameters[i], new MainActivity().results);
+                    postDataParams.put(parameters[i], c.getString(i));
                 }
                 postDataParams.put("id", id);
 
@@ -92,28 +92,30 @@ public class PushToGoogleService extends IntentService {
             }
         }
     }
-        public String getPostDataString(JSONObject params) throws Exception {
 
-            StringBuilder result = new StringBuilder();
-            boolean first = true;
+    public String getPostDataString(JSONObject params) throws Exception {
 
-            Iterator<String> itr = params.keys();
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
 
-            while(itr.hasNext()){
+        Iterator<String> itr = params.keys();
 
-                String key= itr.next();
-                Object value = params.get(key);
+        while (itr.hasNext()) {
 
-                if (first)
-                    first = false;
-                else
-                    result.append("&");
+            String key = itr.next();
+            Object value = params.get(key);
 
-                result.append(URLEncoder.encode(key, "UTF-8"));
-                result.append("=");
-                result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+            if (first)
+                first = false;
+            else
+                result.append("&");
 
-            }
-            return result.toString();
+            result.append(URLEncoder.encode(key, "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+
         }
+        return result.toString();
     }
+
+}

@@ -20,10 +20,10 @@ public class AutoFragment extends TitledFragment {
 
         View v = inflater.inflate(R.layout.fragment_auto, container, false);
 
-        hanging = v.findViewById(R.id.Hanging);
-        goldCube = v.findViewById(R.id.CubeSwitch);
-        teamIcon = v.findViewById(R.id.IconSwitch);
-        parkedCrater = v.findViewById(R.id.ParkSwitch);
+        hanging = (Switch)v.findViewById(R.id.HangingSwitch);
+        goldCube = (Switch)v.findViewById(R.id.CubeSwitch);
+        teamIcon = (Switch)v.findViewById(R.id.IconSwitch);
+        parkedCrater = (Switch)v.findViewById(R.id.ParkSwitch);
 
         return v;
     }
