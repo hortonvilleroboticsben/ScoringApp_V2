@@ -1,6 +1,7 @@
 package com.hortonvillerobotics.scoringapp_v2;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -9,10 +10,13 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +57,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        1);
+
+            }
+        }
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
@@ -63,32 +82,23 @@ public class MainActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
+
                 results[1] = ""+StartFragment.matchNumber.getText();
                 results[2] = StartFragment.teams.getSelectedItem().toString();
                 results[3] = ""+AutoFragment.hanging.isChecked()+"";
                 results[4] = ""+AutoFragment.goldCube.isChecked();
                 results[5] = AutoFragment.teamIcon.isChecked()+"";
                 results[6] = AutoFragment.parkedCrater.isChecked()+"";
-                try {
-                    results[7] = "" + (double) TeleOpFragment.gold.getProgress() / TeleOpFragment.gold.getMax();
-                }catch (Exception e){
-                    results[7] = "0";
-                }
-                try{
-                    results[8] = ""+(double)TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax();
-                }catch (Exception e){
-                    results[8] = "0";
-                }
-                try {
-                    results[9] = "" + (double) TeleOpFragment.depo.getProgress() / TeleOpFragment.depo.getMax();
-                } catch(Exception e){
-                    results[9] = "0";
-                }
-                results[10] = ""+TeleOpFragment.endPos.getSelectedItem().toString();
+                results[7] = "" + ((TeleOpFragment.gold!=null) ? (double) TeleOpFragment.gold.getProgress(): 0);
+                results[8] = "" + ((TeleOpFragment.silver!=null) ? (double) TeleOpFragment.silver.getProgress(): 0);
+                results[9] = "" + ((TeleOpFragment.depo!=null) ? (double) TeleOpFragment.depo.getProgress(): 0);
+                results[10]= (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+
                 Database.getInstance(getApplicationContext()).commitToDatabase(results);
 
-                Intent serviceIntent = new Intent("PushToGoogleService");
+                Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
                 startService(serviceIntent);
             }
 

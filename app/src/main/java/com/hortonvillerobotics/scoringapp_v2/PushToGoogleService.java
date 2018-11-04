@@ -30,6 +30,8 @@ public class PushToGoogleService extends IntentService {
         super("PushToGoogleService");
     }
 
+    private static String TAG = "PushToGoogleService";
+
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Cursor c = Database.getInstance(getApplicationContext()).database.query("Matches", null, null, null, null, null, null);
@@ -52,7 +54,7 @@ public class PushToGoogleService extends IntentService {
                 postDataParams.put("id", id);
 
 
-                Log.e("params", postDataParams.toString());
+                Log.d(TAG, "Params: " + postDataParams.toString());
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
@@ -89,6 +91,7 @@ public class PushToGoogleService extends IntentService {
 
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

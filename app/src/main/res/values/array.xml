@@ -10,5 +10,6 @@
         <item>Hanging</item>
         <item>In Crater</item>
         <item>Completely In Crater</item>
+        <item>Nothing</item>
     </string-array>
 </resources>
