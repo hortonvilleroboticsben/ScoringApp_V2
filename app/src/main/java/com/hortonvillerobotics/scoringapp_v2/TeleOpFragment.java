@@ -54,6 +54,11 @@ public class TeleOpFragment extends TitledFragment{
         s.setMax(10);
         f.pairSeekBar(s);
 
+        s = (SeekBar)v.findViewById(R.id.DepotFill);
+        f = (FillUpImage)v.findViewById(R.id.DepotFillUpImage);
+        s.setMax(10);
+        f.pairSeekBar(s);
+
         gold = v.findViewById(R.id.GoldFill);
         silver = v.findViewById(R.id.SilverFill);
         depo = v.findViewById(R.id.DepotFill);
