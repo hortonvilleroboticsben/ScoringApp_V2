@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
-    public String[] results = {"","","","","","","","","","",""};
+    public String[] results = new String[11];
     Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,25 +64,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
-                results[0] = ""+StartFragment.matchNumber;
-                results[1] = StartFragment.teams.getSelectedItem().toString();
-                results[2] = ""+AutoFragment.hanging.isChecked()+"";
-                results[3] = ""+AutoFragment.goldCube.isChecked();
-                results[4] = AutoFragment.teamIcon.isChecked()+"";
-                results[5] = AutoFragment.parkedCrater.isChecked()+"";
+                results[1] = ""+StartFragment.matchNumber.getText();
+                results[2] = StartFragment.teams.getSelectedItem().toString();
+                results[3] = ""+AutoFragment.hanging.isChecked()+"";
+                results[4] = ""+AutoFragment.goldCube.isChecked();
+                results[5] = AutoFragment.teamIcon.isChecked()+"";
+                results[6] = AutoFragment.parkedCrater.isChecked()+"";
                 try {
-                    results[6] = "" + (double) TeleOpFragment.gold.getProgress() / TeleOpFragment.gold.getMax();
-                }catch (Exception e){
-                    results[6] = "0";
-                }
-                try{
-                    results[7] = ""+(double)TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax();
+                    results[7] = "" + (double) TeleOpFragment.gold.getProgress() / TeleOpFragment.gold.getMax();
                 }catch (Exception e){
                     results[7] = "0";
                 }
-                results[8] = "this is suppose to be the depo score";
-                results[9] = "this is suppose to be the end position for the robot";
-                results[10] = "STRING";
+                try{
+                    results[8] = ""+(double)TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax();
+                }catch (Exception e){
+                    results[8] = "0";
+                }
+                try {
+                    results[9] = "" + (double) TeleOpFragment.depo.getProgress() / TeleOpFragment.depo.getMax();
+                } catch(Exception e){
+                    results[9] = "0";
+                }
+                results[10] = ""+TeleOpFragment.endPos.getSelectedItem().toString();
                 Database.getInstance(getApplicationContext()).commitToDatabase(results);
 
                 Intent serviceIntent = new Intent("PushToGoogleService");
@@ -157,105 +160,4 @@ public class MainActivity extends AppCompatActivity {
             return views[position].getPageTitle();
         }
     }
-
-//    public class SendRequest extends AsyncTask<String, Void, String> {
-//
-//
-//        protected void onPreExecute(){}
-//
-//        protected String doInBackground(String... arg0) {
-//
-//            try{
-//
-//                String gie = pM.getString(getString(R.string.gie), "");
-//
-//                URL url = new URL("https://script.google.com/macros/d/MAcVajrwTLWBuILd4kSWqPWKLfJIYyY8Y/edit?uiv=2&mid=ACjPJvHRsK6LSZfrzwYj359tvH57SYd9ylX3sg2J1vr9T9pFHMHwu_utcDL6wJAdqwvn8PTi0eiwJNH_MwX0tI2Dj8d5ymIF7IfqIZ8dNi0hYVcE3N3ucNXgKcSrPaxbNPqqHP1PcyzTLEY");
-//                JSONObject postDataParams = new JSONObject();
-//                String id= gie;//"14DoM0-EFK_oKTBs1sgPWpb5_Lb9PVxKGNuI44nqNT3Y";
-//
-//                String[] parameters = {"team","hanging","teamIcon","goldCube","parkedCrater",
-//                "goldTele","silverTele","inCrater","completeCrater","endHanging"};
-//
-//                for(int i = 0; i < parameters.length; i++) {
-////                    postDataParams.put(parameters[i],results[i]);
-//                }
-//                postDataParams.put("id",id);
-//
-//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                conn.setReadTimeout(15000 /* milliseconds */);
-//                conn.setConnectTimeout(15000 /* milliseconds */);
-//                conn.setRequestMethod("POST");
-//                conn.setDoInput(true);
-//                conn.setDoOutput(true);
-//
-//                OutputStream os = conn.getOutputStream();
-//                BufferedWriter writer = new BufferedWriter(
-//                        new OutputStreamWriter(os, "UTF-8"));
-//                writer.write(getPostDataString(postDataParams));
-//
-//                writer.flush();
-//                writer.close();
-//                os.close();
-//
-//                int responseCode=conn.getResponseCode();
-//
-//                if (responseCode == HttpsURLConnection.HTTP_OK) {
-//
-//                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                    StringBuffer sb = new StringBuffer("");
-//                    String line="";
-//
-//                    while((line = in.readLine()) != null) {
-//
-//                        sb.append(line);
-//                        break;
-//                    }
-//
-//                    in.close();
-//                    return sb.toString();
-//
-//                }
-//                else {
-//                    return new String("false : "+responseCode);
-//                }
-//            }
-//            catch(Exception e){
-//                return new String("Exception: " + e.getMessage());
-//            }
-//        }
-//        @Override
-//        protected void onPostExecute(String result) {
-//            Toast.makeText(getApplicationContext(), "SUCCESS",
-//                    Toast.LENGTH_LONG).show();
-//
-//            finish();
-//            startActivity(getIntent());
-//        }
-//    }
-//
-//    public String getPostDataString(JSONObject params) throws Exception {
-//
-//        StringBuilder result = new StringBuilder();
-//        boolean first = true;
-//
-//        Iterator<String> itr = params.keys();
-//
-//        while(itr.hasNext()){
-//
-//            String key= itr.next();
-//            Object value = params.get(key);
-//
-//            if (first)
-//                first = false;
-//            else
-//                result.append("&");
-//
-//            result.append(URLEncoder.encode(key, "UTF-8"));
-//            result.append("=");
-//            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
-//
-//        }
-//        return result.toString();
-//    }
-
 }

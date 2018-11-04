@@ -36,12 +36,12 @@ public class PushToGoogleService extends IntentService {
         while (c.getPosition() < c.getCount()) {
             c.moveToNext();
             try {
-                SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
+                              SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
                 String sheetID = pM.getString(getString(R.string.sheetID), "");
 
-                URL url = new URL("https://script.google.com/a/hortonvillerobotics.com/macros/s/AKfycbzSukoOXFOX1jKz3rp7MDyrG_czuIuk6zeoA-3iNLy1AH4KD58/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycbzSukoOXFOX1jKz3rp7MDyrG_czuIuk6zeoA-3iNLy1AH4KD58/exec");
                 JSONObject postDataParams = new JSONObject();
-                String id = "1Fu9qCjgzlClW2OxjeJrEjVGu9MaaW93NaMcrojPdQpQ";
+                String id = "1nmSCRa0QBLV2OKZyC0pTR8jIBFGyCcUkh-n7eAqQcus";
 
                 String[] parameters = {"matchNumber", "teamNumber", "Hanging", "goldCube", "teamIcon"
                         , "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};

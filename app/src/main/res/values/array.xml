@@ -6,4 +6,9 @@
     <item>TeamName3</item>
     <item>TeamName4</item>
     </string-array>
+    <string-array name="EndGameOptions">
+        <item>Hanging</item>
+        <item>In Crater</item>
+        <item>Completely In Crater</item>
+    </string-array>
 </resources>

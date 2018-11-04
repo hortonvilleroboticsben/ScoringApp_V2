@@ -19,6 +19,7 @@ public class StartFragment extends TitledFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_start, container, false);
         teams = v.findViewById(R.id.TeamName);
+        matchNumber = v.findViewById(R.id.editText2);
         return v;
     }
 

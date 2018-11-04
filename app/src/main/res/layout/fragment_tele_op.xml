@@ -23,12 +23,12 @@
     <TextView
         android:id="@+id/GoldText"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="5dp"
-        android:text="Gold"
         android:gravity="center"
+        android:text="Gold"
         android:textColor="@android:color/black"
-        android:textSize="27sp"/>
+        android:textSize="27sp" />
 
     <LinearLayout
         android:id="@+id/GoldSection"
@@ -52,9 +52,9 @@
     <TextView
         android:id="@+id/SilverText"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="Silver"
+        android:layout_height="35dp"
         android:gravity="center"
+        android:text="Silver"
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
@@ -71,10 +71,38 @@
 
         <com.hortonvillerobotics.scoringapp_v2.FillUpImage
             android:id="@+id/SilverFillUpImage"
-            android:layout_height="match_parent"
             android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="25dp"/>
+            android:layout_marginLeft="25dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/DepotText"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="Depot"
+        android:textColor="@android:color/black"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:id="@+id/DepotSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/DepotFill"
+            android:layout_width="225dp"
+            android:layout_height="match_parent" />
+
+        <com.hortonvillerobotics.scoringapp_v2.FillUpImage
+            android:id="@+id/DepotFillUpImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp" />
     </LinearLayout>
 
     <TextView
@@ -86,31 +114,12 @@
         android:textSize="38sp"
         tools:textColor="@android:color/black" />
 
-    <Switch
-        android:id="@+id/Hanging"
+    <Spinner
+        android:id="@+id/EndgameOptions"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="Hanging"
-        android:textSize="27sp" />
-
-    <Switch
-        android:id="@+id/InCrater"
-        android:layout_width="306dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="In Crater"
-        android:textSize="27sp" />
-
-    <Switch
-        android:id="@+id/CompletelyInCrater"
-        android:layout_width="306dp"
-        android:layout_height="70dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="Completely In Crater"
-        android:textSize="27sp" />
+        android:layout_height="75dp"
+        android:entries="@array/EndGameOptions"
+        android:prompt="@string/Hint"
+        android:spinnerMode="dialog" />
 
 </LinearLayout>

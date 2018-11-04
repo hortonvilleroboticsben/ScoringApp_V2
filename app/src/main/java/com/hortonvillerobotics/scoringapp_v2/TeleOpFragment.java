@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -36,6 +37,9 @@ public class TeleOpFragment extends TitledFragment{
     public static Switch inCrater;
     public static Switch comCrater;
     public static Switch endHanging;
+    public static SeekBar depo;
+    public static Spinner endPos;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
@@ -52,10 +56,8 @@ public class TeleOpFragment extends TitledFragment{
 
         gold = v.findViewById(R.id.GoldFill);
         silver = v.findViewById(R.id.SilverFill);
-        inCrater = v.findViewById(R.id.InCrater);
-        comCrater = v.findViewById(R.id.CompletelyInCrater);
-        endHanging = v.findViewById(R.id.Hanging);
-        //Button submit = v.findViewById(R.id.)
+        depo = v.findViewById(R.id.DepotFill);
+        endPos = v.findViewById(R.id.EndgameOptions);
 
         return v;
     }
