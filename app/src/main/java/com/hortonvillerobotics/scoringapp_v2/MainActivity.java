@@ -2,25 +2,17 @@ package com.hortonvillerobotics.scoringapp_v2;
 
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,30 +20,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
-    public String[] results = new String[11];
+    public String[] results = new String[10];
     Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,18 +61,18 @@ public class MainActivity extends AppCompatActivity {
 
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
 
-                results[1] = ""+StartFragment.matchNumber.getText();
-                results[2] = StartFragment.teams.getSelectedItem().toString();
-                results[3] = ""+AutoFragment.hanging.isChecked()+"";
-                results[4] = ""+AutoFragment.goldCube.isChecked();
-                results[5] = AutoFragment.teamIcon.isChecked()+"";
-                results[6] = AutoFragment.parkedCrater.isChecked()+"";
-                results[7] = "" + ((TeleOpFragment.gold!=null) ? (double) TeleOpFragment.gold.getProgress(): 0);
-                results[8] = "" + ((TeleOpFragment.silver!=null) ? (double) TeleOpFragment.silver.getProgress(): 0);
-                results[9] = "" + ((TeleOpFragment.depo!=null) ? (double) TeleOpFragment.depo.getProgress(): 0);
-                results[10]= (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+                results[0] = ""+StartFragment.matchNumber.getText();
+                results[1] = StartFragment.teams.getSelectedItem().toString();
+                results[2] = ""+AutoFragment.hanging.isChecked()+"";
+                results[3] = ""+AutoFragment.goldCube.isChecked();
+                results[4] = AutoFragment.teamIcon.isChecked()+"";
+                results[5] = AutoFragment.parkedCrater.isChecked()+"";
+                results[6] = "" + ((TeleOpFragment.gold!=null) ? (double) TeleOpFragment.gold.getProgress(): 0);
+                results[7] = "" + ((TeleOpFragment.silver!=null) ? (double) TeleOpFragment.silver.getProgress(): 0);
+                results[8] = "" + ((TeleOpFragment.depot !=null) ? (double) TeleOpFragment.depot.getProgress(): 0);
+                results[9]= (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
 
-                Database.getInstance(getApplicationContext()).commitToDatabase(results);
+                Database.getInstance().commitToDatabase(results);
 
                 Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
                 startService(serviceIntent);

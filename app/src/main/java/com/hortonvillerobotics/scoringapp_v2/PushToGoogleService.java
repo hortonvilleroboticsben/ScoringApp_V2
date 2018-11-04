@@ -22,6 +22,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -31,10 +35,11 @@ public class PushToGoogleService extends IntentService {
     }
 
     private static String TAG = "PushToGoogleService";
+    private final PushToGoogleService me = this;
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        Cursor c = Database.getInstance(getApplicationContext()).database.query("Matches", null, null, null, null, null, null);
+    protected void onHandleIntent(@Nullable final Intent intent) {
+        Cursor c = Database.getInstance().database.query("Matches", null, null, null, null, null, null);
         while (c.getPosition() < c.getCount()) {
             c.moveToNext();
             try {
@@ -88,10 +93,31 @@ public class PushToGoogleService extends IntentService {
 
                     in.close();
 
+                    Database.getInstance().database.execSQL("DELETE FROM Matches WHERE id='"+c.getString(0)+"'");
 
+
+                }else{
+                    ScheduledThreadPoolExecutor s = new ScheduledThreadPoolExecutor(1);
+                    s.schedule(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.e("PushToGoogleService","DIDNT WORK");
+                            Toast.makeText(getApplicationContext(), "DIDNT WORK", Toast.LENGTH_SHORT).show();
+                            startService(new Intent(me, me.getClass()));
+                        }
+                    }, 10, TimeUnit.SECONDS);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                ScheduledThreadPoolExecutor s = new ScheduledThreadPoolExecutor(1);
+                s.schedule(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.e("PushToGoogleService","DIDNT WORK");
+                        Toast.makeText(getApplicationContext(), "DIDNT WORK", Toast.LENGTH_SHORT).show();
+                        startService(new Intent(me, me.getClass()));
+                    }
+                },10, TimeUnit.SECONDS);
             }
         }
     }

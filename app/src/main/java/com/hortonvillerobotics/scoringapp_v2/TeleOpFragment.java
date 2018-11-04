@@ -1,67 +1,38 @@
 package com.hortonvillerobotics.scoringapp_v2;
 
-import android.app.Fragment;
-import android.app.Presentation;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.Toast;
-
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class TeleOpFragment extends TitledFragment{
 
     public static SeekBar gold;
     public static SeekBar silver;
-    public static Switch inCrater;
-    public static Switch comCrater;
-    public static Switch endHanging;
-    public static SeekBar depo;
+    public static SeekBar depot;
     public static Spinner endPos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
 
-        SeekBar s = (SeekBar)v.findViewById(R.id.GoldFill);
+        gold = (SeekBar)v.findViewById(R.id.GoldFill);
         FillUpImage f = (FillUpImage)v.findViewById(R.id.GoldFillUpImage);
-        s.setMax(10);
-        f.pairSeekBar(s);
+        gold.setMax(10);
+        f.pairSeekBar(gold);
 
-        s = (SeekBar)v.findViewById(R.id.SilverFill);
+        silver = (SeekBar)v.findViewById(R.id.SilverFill);
         f = (FillUpImage)v.findViewById(R.id.SilverFillUpImage);
-        s.setMax(10);
-        f.pairSeekBar(s);
+        silver.setMax(10);
+        f.pairSeekBar(silver);
 
-        s = (SeekBar)v.findViewById(R.id.DepotFill);
+        depot = (SeekBar)v.findViewById(R.id.DepotFill);
         f = (FillUpImage)v.findViewById(R.id.DepotFillUpImage);
-        s.setMax(10);
-        f.pairSeekBar(s);
+        depot.setMax(10);
+        f.pairSeekBar(depot);
 
-        gold = v.findViewById(R.id.GoldFill);
-        silver = v.findViewById(R.id.SilverFill);
-        depo = v.findViewById(R.id.DepotFill);
         endPos = v.findViewById(R.id.EndgameOptions);
 
         return v;
