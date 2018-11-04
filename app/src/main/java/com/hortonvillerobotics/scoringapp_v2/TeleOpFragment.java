@@ -26,6 +26,11 @@ public class TeleOpFragment extends TitledFragment{
         s.setMax(10);
         f.pairSeekBar(s);
 
+        s = (SeekBar)v.findViewById(R.id.DepotFill);
+        f = (FillUpImage)v.findViewById(R.id.DepotFillUpImage);
+        s.setMax(10);
+        f.pairSeekBar(s);
+
 
         Log.d("TeleOpFragment", "Val is: " + Database.getInstance().val);
         return v;
