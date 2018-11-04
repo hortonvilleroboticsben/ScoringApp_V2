@@ -9,11 +9,12 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/MatchNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Match Number"
+        android:hint="@string/MatchNumber"
         android:inputType="number" />
 
     <Spinner
@@ -21,6 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:drawSelectorOnTop="true"
-        android:entries="@array/spinnerItems"/>
+        android:entries="@array/TeamNames"
+        android:prompt="@string/Hint"
+        android:spinnerMode="dialog"/>
 
 </LinearLayout>

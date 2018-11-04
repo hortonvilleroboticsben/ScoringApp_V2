@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="spinnerItems">
+    <string-array name="TeamNames">
         <item>TeamName1</item>
         <item>TeamName2</item>
         <item>TeamName3</item>
         <item>TeamName4</item>
+    </string-array>
+
+    <string-array name="EndGameOptions">
+        <item>Hanging</item>
+        <item>In Crater</item>
+        <item>Completely In Crater</item>
     </string-array>
 </resources>

@@ -16,7 +16,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Autonomous"
+        android:text="@string/AutonomousTitle"
         android:textSize="48sp"
         tools:textColor="@android:color/black" />
 
