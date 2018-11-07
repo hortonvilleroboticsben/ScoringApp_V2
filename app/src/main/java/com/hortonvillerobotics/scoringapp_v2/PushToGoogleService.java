@@ -43,21 +43,19 @@ public class PushToGoogleService extends IntentService {
         while (c.getPosition() < c.getCount()) {
             c.moveToNext();
             try {
-                              SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
                 String sheetID = pM.getString(getString(R.string.sheetID), "");
 
                 URL url = new URL("https://script.google.com/macros/s/AKfycbzSukoOXFOX1jKz3rp7MDyrG_czuIuk6zeoA-3iNLy1AH4KD58/exec");
                 JSONObject postDataParams = new JSONObject();
                 String id = "1nmSCRa0QBLV2OKZyC0pTR8jIBFGyCcUkh-n7eAqQcus";
 
-                String[] parameters = {"matchNumber", "teamNumber", "Hanging", "goldCube", "teamIcon"
-                        , "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
+                String[] parameters = {"hash","matchNumber", "teamNumber", "hanging", "goldCube", "teamIcon", "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
 
                 for (int i = 0; i < parameters.length; i++) {
                     postDataParams.put(parameters[i], c.getString(i));
                 }
                 postDataParams.put("id", id);
-
 
                 Log.d(TAG, "Params: " + postDataParams.toString());
 
@@ -93,7 +91,7 @@ public class PushToGoogleService extends IntentService {
 
                     in.close();
 
-                    Database.getInstance().database.execSQL("DELETE FROM Matches WHERE id='"+c.getString(0)+"'");
+                   Database.getInstance().database.execSQL("DELETE FROM Matches WHERE id='"+c.getString(0)+"'");
 
 
                 }else{
@@ -128,12 +126,10 @@ public class PushToGoogleService extends IntentService {
         boolean first = true;
 
         Iterator<String> itr = params.keys();
-
         while (itr.hasNext()) {
 
             String key = itr.next();
             Object value = params.get(key);
-
             if (first)
                 first = false;
             else
@@ -144,6 +140,7 @@ public class PushToGoogleService extends IntentService {
             result.append(URLEncoder.encode(value.toString(), "UTF-8"));
 
         }
+        Log.d(TAG,result.toString());
         return result.toString();
     }
 

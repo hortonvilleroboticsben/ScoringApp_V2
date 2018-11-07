@@ -20,9 +20,6 @@ public class Database {
 
     private Database() {
 
-        String absStorageDir = Environment.getExternalStorageDirectory().getAbsolutePath();
-        String relStorageDir = Environment.getExternalStorageDirectory().getPath();
-
         database = SQLiteDatabase.openOrCreateDatabase(Environment.getExternalStorageDirectory().getPath() + "/matchRecords.db", null);
 
         try {
