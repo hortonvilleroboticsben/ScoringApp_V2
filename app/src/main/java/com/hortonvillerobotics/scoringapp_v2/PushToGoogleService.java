@@ -46,18 +46,14 @@ public class PushToGoogleService extends IntentService {
                 SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
                 String sheetID = pM.getString(getString(R.string.sheetID), "");
 
-                URL url = new URL("https://script.google.com/macros/s/AKfycbzSukoOXFOX1jKz3rp7MDyrG_czuIuk6zeoA-3iNLy1AH4KD58/exec");
+                URL url = new URL("https://script.google.com/macros/s/AKfycby4wYSNSdmSdS1iEHzfTnMXbm1625COAko6zQAw5tXgeJCiYevi/exec");
                 JSONObject postDataParams = new JSONObject();
                 String id = "1nmSCRa0QBLV2OKZyC0pTR8jIBFGyCcUkh-n7eAqQcus";
 
-                String[] parameters = {"hash","matchNumber", "teamNumber", "hanging", "goldCube", "teamIcon", "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
+                String[] parameters = {"matchID","matchNumber", "teamNumber", "hanging", "goldCube", "teamIcon", "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
 
-                for (int i = 0; i < parameters.length; i++) {
-                    postDataParams.put(parameters[i], c.getString(i));
-                }
+                for (int i = 0; i < parameters.length; i++) postDataParams.put(parameters[i], c.getString(i));
                 postDataParams.put("id", id);
-
-                Log.d(TAG, "Params: " + postDataParams.toString());
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
@@ -70,7 +66,7 @@ public class PushToGoogleService extends IntentService {
                 BufferedWriter writer = new BufferedWriter(
                         new OutputStreamWriter(os, "UTF-8"));
                 writer.write(getPostDataString(postDataParams));
-
+                Log.d(TAG,getPostDataString(postDataParams));
                 writer.flush();
                 writer.close();
                 os.close();
@@ -117,6 +113,8 @@ public class PushToGoogleService extends IntentService {
                     }
                 },10, TimeUnit.SECONDS);
             }
+
+
         }
     }
 
@@ -140,7 +138,6 @@ public class PushToGoogleService extends IntentService {
             result.append(URLEncoder.encode(value.toString(), "UTF-8"));
 
         }
-        Log.d(TAG,result.toString());
         return result.toString();
     }
 
