@@ -13,11 +13,11 @@ public class StartFragment extends TitledFragment {
 
     public static EditText matchNumber;
     public static Spinner teams;
-
+    public static View v;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_start, container, false);
+        v = inflater.inflate(R.layout.fragment_start, container, false);
         teams = v.findViewById(R.id.TeamName);
         matchNumber = v.findViewById(R.id.editText2);
         return v;
@@ -26,5 +26,10 @@ public class StartFragment extends TitledFragment {
     @Override
     String getPageTitle() {
         return "Start";
+    }
+
+    @Override
+    void reset() {
+
     }
 }

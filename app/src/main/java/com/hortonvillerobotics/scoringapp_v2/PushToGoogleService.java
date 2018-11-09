@@ -48,7 +48,7 @@ public class PushToGoogleService extends IntentService {
 
                 URL url = new URL("https://script.google.com/macros/s/AKfycby4wYSNSdmSdS1iEHzfTnMXbm1625COAko6zQAw5tXgeJCiYevi/exec");
                 JSONObject postDataParams = new JSONObject();
-                String id = "1nmSCRa0QBLV2OKZyC0pTR8jIBFGyCcUkh-n7eAqQcus";
+                String id = sheetID;
 
                 String[] parameters = {"matchID","matchNumber", "teamNumber", "hanging", "goldCube", "teamIcon", "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
 

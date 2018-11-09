@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditTextPreference
-        android:key="gie"
+        android:key="sheetID"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:summary="Enter your Google Sheet ID."

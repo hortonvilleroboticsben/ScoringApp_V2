@@ -32,4 +32,9 @@ public class AutoFragment extends TitledFragment {
     String getPageTitle() {
         return "Autonomous";
     }
+
+    @Override
+    void reset() {
+
+    }
 }

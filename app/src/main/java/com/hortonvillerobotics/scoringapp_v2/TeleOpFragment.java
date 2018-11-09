@@ -42,4 +42,9 @@ public class TeleOpFragment extends TitledFragment{
     String getPageTitle() {
         return "TeleOp";
     }
+
+    @Override
+    void reset() {
+
+    }
 }

@@ -4,4 +4,5 @@ import android.app.Fragment;
 
 public abstract class TitledFragment extends Fragment {
     abstract String getPageTitle();
+    abstract void reset();
 }

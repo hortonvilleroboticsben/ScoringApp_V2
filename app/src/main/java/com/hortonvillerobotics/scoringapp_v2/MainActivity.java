@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
                 startService(serviceIntent);
+
+                for(TitledFragment t : views) t.reset();
             }
 
         }   );
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
             return true;
         }
 
