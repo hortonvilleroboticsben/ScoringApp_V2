@@ -33,8 +33,4 @@ public class AutoFragment extends TitledFragment {
         return "Autonomous";
     }
 
-    @Override
-    void reset() {
-
-    }
 }

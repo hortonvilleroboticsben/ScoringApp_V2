@@ -43,8 +43,5 @@ public class TeleOpFragment extends TitledFragment{
         return "TeleOp";
     }
 
-    @Override
-    void reset() {
 
-    }
 }

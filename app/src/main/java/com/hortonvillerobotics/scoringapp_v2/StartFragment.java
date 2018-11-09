@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class StartFragment extends TitledFragment {
 
@@ -28,8 +29,5 @@ public class StartFragment extends TitledFragment {
         return "Start";
     }
 
-    @Override
-    void reset() {
 
-    }
 }

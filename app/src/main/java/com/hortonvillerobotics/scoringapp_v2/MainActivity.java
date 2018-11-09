@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -77,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
                 startService(serviceIntent);
 
-                for(TitledFragment t : views) t.reset();
+                Toast.makeText(getApplicationContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
             }
 
         }   );
