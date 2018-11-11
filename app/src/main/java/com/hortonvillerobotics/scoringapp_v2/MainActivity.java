@@ -6,7 +6,9 @@ import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -47,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
                         1);
 
             }
+        }
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String sheetID = preferences.getString("sheetID",null);
+        if(sheetID==null) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("sheetID",getString(R.string.DefaultSheetID));
+            editor.commit();
         }
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
