@@ -16,11 +16,12 @@
         android:hint="Match Number"
         android:inputType="number" />
 
-    <Spinner
-        android:id="@+id/TeamName"
+    <EditText
+        android:id="@+id/TeamNumber"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:drawSelectorOnTop="true"
-        android:entries="@array/spinnerItems"/>
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Team Number"
+        android:inputType="number" />
 
 </LinearLayout>

@@ -13,13 +13,13 @@ import android.widget.Toast;
 public class StartFragment extends TitledFragment {
 
     public static EditText matchNumber;
-    public static Spinner teams;
+    public static EditText teamNumber;
     public static View v;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_start, container, false);
-        teams = v.findViewById(R.id.TeamName);
+        teamNumber = v.findViewById(R.id.TeamNumber);
         matchNumber = v.findViewById(R.id.editText2);
         return v;
     }

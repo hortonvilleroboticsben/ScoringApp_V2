@@ -34,7 +34,7 @@ public class Database {
     }
 
     public void commitToDatabase(String[] args) {
-        int entryHash = (("" + args[0]) + args[1] + System.currentTimeMillis()).hashCode();
+        int entryHash = (("" + args[0]) + args[1]).hashCode();
         String elementEntry = "('"+entryHash+"','";
         for (String s : args) {
             elementEntry += s + "','";

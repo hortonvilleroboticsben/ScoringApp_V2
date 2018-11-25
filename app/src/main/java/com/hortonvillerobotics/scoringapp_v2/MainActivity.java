@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
 
                 results[0] = ""+StartFragment.matchNumber.getText();
-                results[1] = StartFragment.teams.getSelectedItem().toString();
+                results[1] = ""+StartFragment.teamNumber.getText();
                 results[2] = ""+AutoFragment.hanging.isChecked()+"";
                 results[3] = ""+AutoFragment.goldCube.isChecked();
                 results[4] = AutoFragment.teamIcon.isChecked()+"";
@@ -84,14 +84,20 @@ public class MainActivity extends AppCompatActivity {
                 results[8] = "" + ((TeleOpFragment.depot !=null) ? (double) TeleOpFragment.depot.getProgress()/TeleOpFragment.depot.getMax(): 0);
                 results[9]= (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
 
-                Database.getInstance().commitToDatabase(results);
+                if(results[0]!="" && results[1]!="") {
+                    Database.getInstance().commitToDatabase(results);
 
-                Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
-                startService(serviceIntent);
 
-                Toast.makeText(getApplicationContext(),"SUCCESS",Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(getIntent());
+                    Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
+                    startService(serviceIntent);
+
+                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(getIntent());
+                } else {
+                    Toast.makeText(getApplicationContext(),"Please Fill in Match and Team number",Toast.LENGTH_LONG).show();
+                    mViewPager.setCurrentItem(0, true);
+                }
             }
 
         }   );
