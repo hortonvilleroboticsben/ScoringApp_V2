@@ -18,10 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
                                       <entry key="foregroundImage" value="C:\Users\kungl\Pictures\hortonville_robotics_logo.jpg" />
-                                      <entry key="foregroundLayerName" value="hrfore" />
-                                      <entry key="outputName" value="hr" />
                                     </map>
                                   </option>
                                 </PersistentState>
