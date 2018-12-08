@@ -8,43 +8,36 @@
     tools:context=".MainActivity$PlaceholderFragment"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/EnterNumbers"
+    <TextView
+        android:id="@+id/MatchInfoTitle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:text="Match Info"
+        android:textSize="32sp"
+        tools:textAlignment="center"
+        tools:textColor="@android:color/black" />
 
-        <EditText
-            android:id="@+id/TeamNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Team Number"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Match Number"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Logos"
+    <EditText
+        android:id="@+id/TeamNumber"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:hint="Team Number"
+        android:inputType="number"
+        android:textSize="32dp" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/hortonville_robotics_logo" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Match Number"
+        android:inputType="number"
+        android:textSize="32dp" />
+    <!--<View-->
+        <!--android:visibility="visible"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="36dp"/>-->
 
 </LinearLayout>
