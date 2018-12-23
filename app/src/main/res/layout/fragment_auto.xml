@@ -28,7 +28,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="25dp"
-        android:text="Hanging"
+        android:text="Landed from Hanging"
         android:textSize="20sp" />
 
     <Switch
