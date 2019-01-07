@@ -2,6 +2,8 @@ package com.hortonvillerobotics.scoringapp_v2;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -15,15 +17,12 @@ import android.widget.Toast;
 
 public class TeleOpFragment extends TitledFragment{
 
-    public static SeekBar gold;
-    public static SeekBar silver;
-    public static SeekBar depot;
+    public static SeekBar gold, silver;
     public static Spinner endPos;
-    public static TextView goldRowNum;
-    public static TextView silverRowNum;
-    public static TextView depotNum;
-    public static int goldRows;
-    public static int silverRows;
+    public static TextView goldRowNum, silverRowNum;
+    public static int goldRows, silverRows;
+    public static EditText depotNum;
+    public static String checkForZero;
 
     static FillUpImage f;
     static FillUpImage f0;
@@ -81,9 +80,8 @@ public class TeleOpFragment extends TitledFragment{
         });
 
         depotNum = v.findViewById(R.id.DepotNum);
+        depotNum.setFilters(new InputFilter[]{ new MinMaxFilter("0", "10")});
 
-        String numberString = depotNum.getText().toString();
-//        int num = num.;
 
         endPos = v.findViewById(R.id.EndgameOptions);
 

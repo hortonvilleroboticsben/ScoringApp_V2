@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -79,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 results[3] = ""+AutoFragment.goldCube.isChecked();
                 results[4] = AutoFragment.teamIcon.isChecked()+"";
                 results[5] = AutoFragment.parkedCrater.isChecked()+"";
-                results[6] = "" + ((TeleOpFragment.gold!=null) ? (double) TeleOpFragment.gold.getProgress()/TeleOpFragment.gold.getMax(): 0);
-                results[7] = "" + ((TeleOpFragment.silver!=null) ? (double) TeleOpFragment.silver.getProgress()/TeleOpFragment.silver.getMax(): 0);
-                results[8] = "" + ((TeleOpFragment.depot !=null) ? (double) TeleOpFragment.depot.getProgress()/TeleOpFragment.depot.getMax(): 0);
-                results[9]= (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+                results[6] = "" + ((TeleOpFragment.gold!=null) ? TeleOpFragment.gold.getProgress(): 0);
+                results[7] = "" + ((TeleOpFragment.silver!=null) ? TeleOpFragment.silver.getProgress(): 0);
+                results[8] = "" + ((TeleOpFragment.depotNum!=null) ? TeleOpFragment.depotNum.getText().toString() : 0);
+                results[9] = (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
 
                 if(results[0]!="" && results[1]!="") {
                     Database.getInstance().commitToDatabase(results);
@@ -102,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
         }   );
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
