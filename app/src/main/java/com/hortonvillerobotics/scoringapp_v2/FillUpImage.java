@@ -51,7 +51,7 @@ public class FillUpImage extends ImageView {
         });
     }
 
-    private void changePercentFilled(double percentFilled){
+    public void changePercentFilled(double percentFilled){
         percentFilled = 1-percentFilled;
         img = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
         img.setPixel(img.getWidth()/2, img.getHeight()/2, Color.RED);
