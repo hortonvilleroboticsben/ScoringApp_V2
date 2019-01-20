@@ -22,11 +22,7 @@ public class TeleOpFragment extends TitledFragment{
     public static TextView goldRowNum, silverRowNum;
     public static int goldRows, silverRows;
     public static EditText depotNum;
-    public static String checkForZero;
-
-    static FillUpImage f;
-    static FillUpImage f0;
-    static FillUpImage f1;
+    public static FillUpImage f, f0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -37,15 +33,12 @@ public class TeleOpFragment extends TitledFragment{
         gold.setMax(7);
 
         gold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 goldRows = gold.getProgress();
@@ -62,15 +55,12 @@ public class TeleOpFragment extends TitledFragment{
         silver.setMax(7);
 
         silver.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
             }
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 silverRows = silver.getProgress();
@@ -81,7 +71,6 @@ public class TeleOpFragment extends TitledFragment{
 
         depotNum = v.findViewById(R.id.DepotNum);
         depotNum.setFilters(new InputFilter[]{ new MinMaxFilter("0", "10")});
-
 
         endPos = v.findViewById(R.id.EndgameOptions);
 
