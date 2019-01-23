@@ -3,8 +3,10 @@ package com.hortonvillerobotics.scoringapp_v2;
 
 import android.Manifest;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -72,31 +74,52 @@ public class MainActivity extends AppCompatActivity {
 
                 //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
 
-                results[0] = ""+StartFragment.matchNumber.getText();
-                results[1] = ""+StartFragment.teamNumber.getText();
-                results[2] = ""+AutoFragment.hanging.isChecked()+"";
-                results[3] = ""+AutoFragment.goldCube.isChecked();
-                results[4] = AutoFragment.teamIcon.isChecked()+"";
-                results[5] = AutoFragment.parkedCrater.isChecked()+"";
-                results[6] = "" + ((TeleOpFragment.gold!=null) ? TeleOpFragment.gold.getProgress(): 0);
-                results[7] = "" + ((TeleOpFragment.silver!=null) ? TeleOpFragment.silver.getProgress(): 0);
-                results[8] = "" + ((TeleOpFragment.depotNum!=null) ? TeleOpFragment.depotNum.getText().toString() : 0);
-                results[9] = (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+                final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("Submit Alert");
+                alertDialog.setMessage("Are you sure you want to submit?");
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
 
-                if(results[0]!="" && results[1]!="") {
-                    Database.getInstance().commitToDatabase(results);
+                                results[0] = ""+StartFragment.matchNumber.getText();
+                                results[1] = ""+StartFragment.teamNumber.getText();
+                                results[2] = ""+AutoFragment.hanging.isChecked()+"";
+                                results[3] = ""+AutoFragment.goldCube.isChecked();
+                                results[4] = AutoFragment.teamIcon.isChecked()+"";
+                                results[5] = AutoFragment.parkedCrater.isChecked()+"";
+                                results[6] = "" + ((TeleOpFragment.gold!=null) ? TeleOpFragment.gold.getProgress(): 0);
+                                results[7] = "" + ((TeleOpFragment.silver!=null) ? TeleOpFragment.silver.getProgress(): 0);
+                                results[8] = "" + ((TeleOpFragment.depotNum!=null) ? TeleOpFragment.depotNum.getText().toString() : 0);
+                                results[9] = (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+
+                                if(results[0]!="" && results[1]!="") {
+                                    Database.getInstance().commitToDatabase(results);
 
 
-                    Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
-                    startService(serviceIntent);
+                                    Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
+                                    startService(serviceIntent);
 
-                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
-                    finish();
-                    startActivity(getIntent());
-                } else {
-                    Toast.makeText(getApplicationContext(),"Please Fill in Match and Team number",Toast.LENGTH_LONG).show();
-                    mViewPager.setCurrentItem(0, true);
-                }
+                                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    startActivity(getIntent());
+                                } else {
+                                    Toast.makeText(getApplicationContext(),"Please Fill in Match and Team number",Toast.LENGTH_LONG).show();
+                                    mViewPager.setCurrentItem(0, true);
+                                }
+
+                            }
+                        });
+                alertDialog.show();
+
             }
 
         }   );
