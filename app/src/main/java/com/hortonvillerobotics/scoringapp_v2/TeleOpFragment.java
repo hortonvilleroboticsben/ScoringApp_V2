@@ -9,78 +9,94 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TeleOpFragment extends TitledFragment{
+public class TeleOpFragment extends TitledFragment {
 
-    public static SeekBar gold, silver;
     public static Spinner endPos;
-    public static TextView goldRowNum, silverRowNum;
-    public static int goldRows, silverRows;
+    public static TextView goldNum, silverNum;
     public static EditText depotNum;
-    public static FillUpImage f, f0;
+    public int goldNumber = 0;
+    public int silverNumber = 0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
-        gold = (SeekBar) v.findViewById(R.id.GoldFill);
-        f = (FillUpImage) v.findViewById(R.id.GoldFillUpImage);
-        goldRowNum = (TextView) v.findViewById(R.id.goldRowNum);
-        gold.setMax(7);
-
-        gold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                goldRows = gold.getProgress();
-                goldRowNum.setText(goldRows + " Rows");
-                f.changePercentFilled((double) progress / seekBar.getMax());
 
 
+        final Button goldDown = v.findViewById(R.id.goldDecrease);
+        goldDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(goldNumber <= 0){
+                    goldNumber = 0;
+                    goldNum.setText(goldNumber+"");
+                } else {
+                    goldNum.setText(--goldNumber + "");
+                }
             }
         });
 
-        silver = (SeekBar) v.findViewById(R.id.SilverFill);
-        f0 = (FillUpImage) v.findViewById(R.id.SilverFillUpImage);
-        silverRowNum = (TextView) v.findViewById(R.id.silverNumRows);
-        silver.setMax(7);
+        Button goldUp = v.findViewById(R.id.goldIncrease);
+        goldUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (goldNumber >= 50) {
+                    goldNumber = 50;
+                    goldNum.setText(goldNumber + "");
+                } else {
+                    goldNum.setText(++goldNumber + "");
+                }
+            }
+        });
 
-        silver.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+
+        Button silverDown = v.findViewById(R.id.silverDecrease);
+        silverDown.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onClick(View view) {
+                if(silverNumber <= 0){
+                    silverNumber = 0;
+                    silverNum.setText(silverNumber+"");
+                } else {
+                    silverNum.setText(--silverNumber + "");
+                }
             }
+        });
+
+        Button silverUp = v.findViewById(R.id.silverIncrease);
+        silverUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                silverRows = silver.getProgress();
-                silverRowNum.setText(silverRows + " Rows");
-                f0.changePercentFilled((double) progress / seekBar.getMax());
+            public void onClick(View view) {
+                if (silverNumber >= 50) {
+                    silverNumber = 50;
+                    silverNum.setText(silverNumber + "");
+                } else {
+                    silverNum.setText(++silverNumber + "");
+                }
             }
         });
 
         depotNum = v.findViewById(R.id.DepotNum);
-        depotNum.setFilters(new InputFilter[]{ new MinMaxFilter("0", "10")});
+        depotNum.setFilters(new InputFilter[]{new MinMaxFilter("0", "15")});
 
         endPos = v.findViewById(R.id.EndgameOptions);
+
+        goldNum = v.findViewById(R.id.gold_count);
+        silverNum = v.findViewById(R.id.silver_count);
 
         return v;
     }
 
-        @Override
-        String getPageTitle () {
-            return "TeleOp";
-        }
-
+    @Override
+    String getPageTitle() {
+        return "TeleOp";
+    }
 
 }

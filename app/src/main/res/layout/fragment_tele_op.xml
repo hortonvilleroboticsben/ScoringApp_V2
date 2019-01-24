@@ -4,7 +4,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity$PlaceholderFragment"
+    tools:context=".TeleOpFragment"
     android:orientation="vertical">
 
     <TextView
@@ -19,95 +19,86 @@
         tools:textAlignment="center"
         tools:textColor="@android:color/black" />
 
-    <LinearLayout
-        android:id="@+id/GoldTextBoxes"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/GoldText"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="Rows of Gold"
-            android:textColor="@android:color/black"
-            android:textSize="27sp" />
-
-        <TextView
-            android:id="@+id/goldRowNum"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:layout_marginRight="5dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/GoldSection"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <SeekBar
-            android:id="@+id/GoldFill"
-            android:layout_width="225dp"
-            android:layout_height="match_parent" />
-
-        <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-            android:id="@+id/GoldFillUpImage"
-            android:layout_height="match_parent"
-            android:layout_width="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/SilverTextBoxes"
+    <TextView
+        android:id="@+id/GoldText"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/SilverText"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:gravity="left"
-            android:text="Rows of Silver"
-            android:textColor="@android:color/black"
-            android:textSize="27sp" />
-
-        <TextView
-            android:id="@+id/silverNumRows"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:layout_marginRight="5dp" />
-    </LinearLayout>
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Gold Minerals in Depot"
+        android:textColor="@android:color/black"
+        android:textSize="27sp" />
 
     <LinearLayout
-        android:id="@+id/SilverSection"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="13dp"
         android:orientation="horizontal">
 
-        <SeekBar
-            android:id="@+id/SilverFill"
-            android:layout_width="225dp"
-            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/goldDecrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
 
-        <com.hortonvillerobotics.scoringapp_v2.FillUpImage
-            android:id="@+id/SilverFillUpImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp" />
+        <TextView
+            android:id="@+id/gold_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="0dp"
+            android:text="0"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/goldIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/SilverText"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Silver Minerals in Depot"
+        android:textColor="@android:color/black"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/silverDecrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/silver_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="0dp"
+            android:text="0"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/silverIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,7 +110,8 @@
             android:id="@+id/DepotText"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:gravity="left"
+            android:gravity="center"
+            android:textAlignment="center"
             android:text="Minerals in Depot"
             android:textColor="@android:color/black"
             android:textSize="27sp" />

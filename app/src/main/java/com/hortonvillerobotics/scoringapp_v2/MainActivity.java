@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                                 results[3] = ""+AutoFragment.goldCube.isChecked();
                                 results[4] = AutoFragment.teamIcon.isChecked()+"";
                                 results[5] = AutoFragment.parkedCrater.isChecked()+"";
-                                results[6] = "" + ((TeleOpFragment.gold!=null) ? TeleOpFragment.gold.getProgress(): 0);
-                                results[7] = "" + ((TeleOpFragment.silver!=null) ? TeleOpFragment.silver.getProgress(): 0);
+                                results[6] = "" + ((TeleOpFragment.goldNum!=null) ? TeleOpFragment.goldNum.getText(): 0);
+                                results[7] = "" + ((TeleOpFragment.silverNum!=null) ? TeleOpFragment.silverNum.getText(): 0);
                                 results[8] = "" + ((TeleOpFragment.depotNum!=null) ? TeleOpFragment.depotNum.getText().toString() : 0);
                                 results[9] = (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
 
