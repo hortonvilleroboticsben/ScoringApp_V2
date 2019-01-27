@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/TeleOpTitle"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="5dp"
         android:gravity="center"
@@ -25,14 +25,14 @@
         android:layout_height="35dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:text="Gold Minerals in Depot"
+        android:text="Gold Minerals in Lander"
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
     <LinearLayout
+        android:id="@+id/GoldSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_gravity="center"
         android:layout_marginLeft="13dp"
         android:orientation="horizontal">
@@ -49,7 +49,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="0dp"
             android:text="0"
             android:textSize="34sp" />
 
@@ -66,16 +65,15 @@
         android:layout_height="35dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:text="Silver Minerals in Depot"
+        android:text="Silver Minerals in Lander"
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
     <LinearLayout
+        android:id="@+id/SilverSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -90,7 +88,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="0dp"
             android:text="0"
             android:textSize="34sp" />
 
@@ -101,28 +98,45 @@
             android:text="+" />
     </LinearLayout>
 
+
+    <TextView
+    android:id="@+id/DepotText"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center"
+    android:textAlignment="center"
+    android:text="Minerals in Depot"
+    android:textColor="@android:color/black"
+    android:textSize="27sp" />
+
     <LinearLayout
+        android:id="@+id/DepotSection"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical">
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/depotDecrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
 
         <TextView
-            android:id="@+id/DepotText"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:text="Minerals in Depot"
-            android:textColor="@android:color/black"
-            android:textSize="27sp" />
-
-        <EditText
-            android:id="@+id/DepotNum"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:ems="10"
+            android:id="@+id/depot_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:text="0"
-            android:inputType="number" />
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/depotIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
     </LinearLayout>
 
     <TextView

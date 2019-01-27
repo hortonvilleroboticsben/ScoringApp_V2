@@ -19,10 +19,10 @@ import android.widget.Toast;
 public class TeleOpFragment extends TitledFragment {
 
     public static Spinner endPos;
-    public static TextView goldNum, silverNum;
-    public static EditText depotNum;
+    public static TextView goldNum, silverNum, depotNum;
     public int goldNumber = 0;
     public int silverNumber = 0;
+    public int depotNumber = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,13 +83,37 @@ public class TeleOpFragment extends TitledFragment {
             }
         });
 
-        depotNum = v.findViewById(R.id.DepotNum);
-        depotNum.setFilters(new InputFilter[]{new MinMaxFilter("0", "15")});
+        Button depotDown = v.findViewById(R.id.depotDecrease);
+        silverDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(depotNumber <= 0){
+                    depotNumber = 0;
+                    depotNum.setText(depotNumber+"");
+                } else {
+                    depotNum.setText(--silverNumber + "");
+                }
+            }
+        });
+
+        Button depotUp = v.findViewById(R.id.depotIncrease);
+        silverUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (silverNumber >= 50) {
+                    silverNumber = 50;
+                    depotNum.setText(silverNumber + "");
+                } else {
+                    depotNum.setText(++silverNumber + "");
+                }
+            }
+        });
 
         endPos = v.findViewById(R.id.EndgameOptions);
 
         goldNum = v.findViewById(R.id.gold_count);
         silverNum = v.findViewById(R.id.silver_count);
+        depotNum = v.findViewById(R.id.depot_count);
 
         return v;
     }
