@@ -24,6 +24,7 @@ public class TeleOpFragment extends TitledFragment {
     public int silverNumber = 0;
     public int depotNumber = 0;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
