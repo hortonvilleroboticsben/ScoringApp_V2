@@ -20,15 +20,15 @@ public class TeleOpFragment extends TitledFragment {
 
     public static Spinner endPos;
     public static TextView goldNum, silverNum, depotNum;
-    public int goldNumber = 0;
-    public int silverNumber = 0;
-    public int depotNumber = 0;
-
+    public int goldNumber, silverNumber, depotNumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
 
+        goldNumber = 0;
+        silverNumber = 0;
+        depotNumber = 0;
 
         final Button goldDown = v.findViewById(R.id.goldDecrease);
         goldDown.setOnClickListener(new View.OnClickListener() {
@@ -85,27 +85,27 @@ public class TeleOpFragment extends TitledFragment {
         });
 
         Button depotDown = v.findViewById(R.id.depotDecrease);
-        silverDown.setOnClickListener(new View.OnClickListener() {
+        depotDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(depotNumber <= 0){
                     depotNumber = 0;
                     depotNum.setText(depotNumber+"");
                 } else {
-                    depotNum.setText(--silverNumber + "");
+                    depotNum.setText(--depotNumber + "");
                 }
             }
         });
 
         Button depotUp = v.findViewById(R.id.depotIncrease);
-        silverUp.setOnClickListener(new View.OnClickListener() {
+        depotUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (silverNumber >= 50) {
-                    silverNumber = 50;
-                    depotNum.setText(silverNumber + "");
+                if (depotNumber >= 50) {
+                    depotNumber = 50;
+                    depotNum.setText(depotNumber + "");
                 } else {
-                    depotNum.setText(++silverNumber + "");
+                    depotNum.setText(++depotNumber + "");
                 }
             }
         });
