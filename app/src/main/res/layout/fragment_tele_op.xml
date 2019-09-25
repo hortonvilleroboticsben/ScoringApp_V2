@@ -20,31 +20,31 @@
         tools:textColor="@android:color/black" />
 
     <TextView
-        android:id="@+id/GoldText"
+        android:id="@+id/StoneUnderBridge"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:gravity="center"
+        android:text="Stones Under Bridge"
         android:textAlignment="center"
-        android:text="Gold Minerals in Lander"
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
     <LinearLayout
-        android:id="@+id/GoldSection"
+        android:id="@+id/StoneUnderBridgeSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/goldDecrease"
+            android:id="@+id/StoneUnderBridgeDecrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-" />
 
         <TextView
-            android:id="@+id/gold_count"
+            android:id="@+id/StoneUnderBridge_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -53,37 +53,37 @@
             android:textSize="34sp" />
 
         <Button
-            android:id="@+id/goldIncrease"
+            android:id="@+id/StoneUnderBridgeIncrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/SilverText"
+        android:id="@+id/BlocksFoundation"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:gravity="center"
+        android:text="Blocks on Foundation"
         android:textAlignment="center"
-        android:text="Silver Minerals in Lander"
         android:textColor="@android:color/black"
         android:textSize="27sp" />
 
     <LinearLayout
-        android:id="@+id/SilverSection"
+        android:id="@+id/BlocksSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/silverDecrease"
+            android:id="@+id/BlocksDecrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-" />
 
         <TextView
-            android:id="@+id/silver_count"
+            android:id="@+id/Blocks_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -92,7 +92,7 @@
             android:textSize="34sp" />
 
         <Button
-            android:id="@+id/silverIncrease"
+            android:id="@+id/BlocksIncrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+" />
@@ -100,30 +100,30 @@
 
 
     <TextView
-    android:id="@+id/DepotText"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:gravity="center"
-    android:textAlignment="center"
-    android:text="Minerals in Depot"
-    android:textColor="@android:color/black"
-    android:textSize="27sp" />
+        android:id="@+id/TallTower"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="Tallest Height Reached"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="27sp" />
 
     <LinearLayout
-        android:id="@+id/DepotSection"
+        android:id="@+id/TowerSection"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/depotDecrease"
+            android:id="@+id/TowerDecrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-" />
 
         <TextView
-            android:id="@+id/depot_count"
+            android:id="@+id/Tower_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -132,7 +132,7 @@
             android:textSize="34sp" />
 
         <Button
-            android:id="@+id/depotIncrease"
+            android:id="@+id/TowerIncrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+" />
@@ -148,12 +148,25 @@
         android:textSize="38sp"
         tools:textColor="@android:color/black" />
 
-    <Spinner
-        android:id="@+id/EndgameOptions"
+    <Switch
+        android:id="@+id/Capped"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:entries="@array/EndGameOptions"
-        android:prompt="@string/Hint"
-        android:spinnerMode="dialog" />
+        android:layout_height="wrap_content"
+        android:text="Capped"
+        android:textSize="27sp" />
+
+    <Switch
+        android:id="@+id/FoundationMove"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Moved Foundation"
+        android:textSize="27dp" />
+
+    <Switch
+        android:id="@+id/ParkedBuilding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Parked In Building Site"
+        android:textSize="27dp" />
 
 </LinearLayout>

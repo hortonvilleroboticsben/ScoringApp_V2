@@ -23,7 +23,7 @@ public class Database {
         database = SQLiteDatabase.openOrCreateDatabase(Environment.getExternalStorageDirectory().getPath() + "/matchRecords.db", null);
 
         try {
-            database.execSQL("CREATE TABLE IF NOT EXISTS Matches (id VARCHAR(255), matchNum VARCHAR(255), teamNum VARCHAR(255), hanging VARCHAR(255), autoDebris VARCHAR(255), icon VARCHAR(255), autoCrater VARCHAR(255), gold VARCHAR(255), silver VARCHAR(255), depot VARCHAR(255), endPos VARCHAR(255))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS Matches (id VARCHAR(255), matchNum VARCHAR(255), teamNum VARCHAR(255), moveFoundation VARCHAR(255), skyStones VARCHAR(255), regStones VARCHAR(255), parkedBridge VARCHAR(255), stonesBridge VARCHAR(255), onFoundation VARCHAR(255), tallestHeight VARCHAR(255), capped VARCHAR(255), retFoundation VARCHAR(255),parkedBuilding VARCHAR(255))");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class Database {
         }
         elementEntry = elementEntry.substring(0, elementEntry.length() - 2) + ")";
 //        Log.d("Database",elementEntry);
-        database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,hanging,autoDebris,icon,autoCrater,gold,silver,depot,endPos) VALUES " + elementEntry);
+        database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,moveFoundation,skyStones,regStones,parkedBridge,stonesBridge,onFoundation,tallestHeight,capped,retFoundation,parkedBuilding) VALUES " + elementEntry);
 
     }
 }

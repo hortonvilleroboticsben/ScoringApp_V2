@@ -1,120 +1,113 @@
 package com.hortonvillerobotics.scoringapp_v2;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TeleOpFragment extends TitledFragment {
 
-    public static Spinner endPos;
-    public static TextView goldNum, silverNum, depotNum;
-    public int goldNumber, silverNumber, depotNumber;
+    public static Switch capped,foundationMoved,buildingPark;
+    public static TextView underBridge, onFoundation, tallestHeight;
+    public int bridgeNum, foundationNum, heightNum;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
 
-        goldNumber = 0;
-        silverNumber = 0;
-        depotNumber = 0;
+        capped = v.findViewById(R.id.Capped);
+        foundationMoved = v.findViewById(R.id.FoundationMove);
+        buildingPark = v.findViewById(R.id.ParkedBuilding);
 
-        final Button goldDown = v.findViewById(R.id.goldDecrease);
-        goldDown.setOnClickListener(new View.OnClickListener() {
+        bridgeNum = 0;
+        foundationNum = 0;
+        heightNum = 0;
+
+        Button bridgeDown = v.findViewById(R.id.StoneUnderBridgeDecrease);
+        bridgeDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(goldNumber <= 0){
-                    goldNumber = 0;
-                    goldNum.setText(goldNumber+"");
+                if(bridgeNum <= 0){
+                    bridgeNum = 0;
+                    underBridge.setText(bridgeNum+"");
                 } else {
-                    goldNum.setText(--goldNumber + "");
+                    underBridge.setText(--bridgeNum+ "");
                 }
             }
         });
 
-        Button goldUp = v.findViewById(R.id.goldIncrease);
-        goldUp.setOnClickListener(new View.OnClickListener() {
+        Button bridgeUp = v.findViewById(R.id.StoneUnderBridgeIncrease);
+        bridgeUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (goldNumber >= 50) {
-                    goldNumber = 50;
-                    goldNum.setText(goldNumber + "");
+                if(bridgeNum >= 50){
+                    bridgeNum = 50;
+                    underBridge.setText(bridgeNum+"");
                 } else {
-                    goldNum.setText(++goldNumber + "");
+                    underBridge.setText(++bridgeNum+ "");
                 }
             }
         });
 
-
-
-        Button silverDown = v.findViewById(R.id.silverDecrease);
-        silverDown.setOnClickListener(new View.OnClickListener() {
+        Button foundDown = v.findViewById(R.id.BlocksDecrease);
+        foundDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(silverNumber <= 0){
-                    silverNumber = 0;
-                    silverNum.setText(silverNumber+"");
+                if(bridgeNum <= 0){
+                    bridgeNum = 0;
+                    underBridge.setText(bridgeNum+"");
                 } else {
-                    silverNum.setText(--silverNumber + "");
+                    underBridge.setText(--bridgeNum+ "");
                 }
             }
         });
 
-        Button silverUp = v.findViewById(R.id.silverIncrease);
-        silverUp.setOnClickListener(new View.OnClickListener() {
+        Button foundUp = v.findViewById(R.id.BlocksIncrease);
+        foundUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (silverNumber >= 50) {
-                    silverNumber = 50;
-                    silverNum.setText(silverNumber + "");
+                if(foundationNum >= 50){
+                    foundationNum = 50;
+                    onFoundation.setText(foundationNum+"");
                 } else {
-                    silverNum.setText(++silverNumber + "");
+                    onFoundation.setText(++foundationNum+ "");
                 }
             }
         });
 
-        Button depotDown = v.findViewById(R.id.depotDecrease);
-        depotDown.setOnClickListener(new View.OnClickListener() {
+        Button heightDown = v.findViewById(R.id.TowerDecrease);
+        heightDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(depotNumber <= 0){
-                    depotNumber = 0;
-                    depotNum.setText(depotNumber+"");
+                if(heightNum <= 0){
+                    heightNum = 0;
+                    tallestHeight.setText(heightNum+"");
                 } else {
-                    depotNum.setText(--depotNumber + "");
+                    tallestHeight.setText(--heightNum+ "");
                 }
             }
         });
 
-        Button depotUp = v.findViewById(R.id.depotIncrease);
-        depotUp.setOnClickListener(new View.OnClickListener() {
+        Button heightUp = v.findViewById(R.id.TowerIncrease);
+        heightUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (depotNumber >= 50) {
-                    depotNumber = 50;
-                    depotNum.setText(depotNumber + "");
+                if(heightNum >= 50){
+                    heightNum = 50;
+                    tallestHeight.setText(heightNum+"");
                 } else {
-                    depotNum.setText(++depotNumber + "");
+                    tallestHeight.setText(++heightNum+ "");
                 }
             }
         });
 
-        endPos = v.findViewById(R.id.EndgameOptions);
-
-        goldNum = v.findViewById(R.id.gold_count);
-        silverNum = v.findViewById(R.id.silver_count);
-        depotNum = v.findViewById(R.id.depot_count);
+        onFoundation = v.findViewById(R.id.Blocks_count);
+        underBridge = v.findViewById(R.id.StoneUnderBridge_count);
+        tallestHeight = v.findViewById(R.id.Tower_count);
 
         return v;
     }

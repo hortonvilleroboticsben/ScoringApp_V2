@@ -21,45 +21,103 @@
         tools:textColor="@android:color/black" />
 
     <Switch
-        android:id="@+id/HangingSwitch"
+        android:id="@+id/FoundationSwitch"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="25dp"
-        android:text="Landed from Hanging"
-        android:textSize="20sp" />
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="Moved Foundation"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/SkyStone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SkyStones"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/SkySection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/skyDecrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/sky_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="0"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/skyIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/Stones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stones"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/StoneSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/stoneDecrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/stone_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="0"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/stoneIncrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+" />
+    </LinearLayout>
+
 
     <Switch
-        android:id="@+id/CubeSwitch"
+        android:id="@+id/ParkedBridge"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="110dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:text="Knocked Off Cube"
-        android:textSize="20sp" />
-
-    <Switch
-        android:id="@+id/IconSwitch"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
         android:layout_marginBottom="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:text="Team Icon Placed"
-        android:textSize="20sp" />
-
-    <Switch
-        android:id="@+id/ParkSwitch"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:text="Parked In Crater"
-        android:textSize="20sp" />
+        android:text="Parked Under Bridge"
+        android:textSize="30sp" />
 
 
 </LinearLayout>

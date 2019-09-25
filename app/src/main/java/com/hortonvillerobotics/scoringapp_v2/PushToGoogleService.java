@@ -50,7 +50,7 @@ public class PushToGoogleService extends IntentService {
                 JSONObject postDataParams = new JSONObject();
                 String id = sheetID;
 
-                String[] parameters = {"matchID","matchNumber", "teamNumber", "hanging", "goldCube", "teamIcon", "parkedCrater", "goldFilled", "silverFilled", "depoScore", "endPosition"};
+                String[] parameters = {"matchID","matchNumber", "teamNumber", "moveFoundation", "skyStones", "regStones", "parkedBridge", "stonesBridge", "onFoundation", "tallestTower", "capped","retFoundation","parkedBuilding"};
 
                 for (int i = 0; i < parameters.length; i++) postDataParams.put(parameters[i], c.getString(i));
                 postDataParams.put("id", id);

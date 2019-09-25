@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
-    public String[] results = new String[10];
+    public String[] results = new String[12];
     Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         1);
 
-            }
+            }//ok
         }
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -92,14 +92,17 @@ public class MainActivity extends AppCompatActivity {
 
                                 results[0] = ""+StartFragment.matchNumber.getText();
                                 results[1] = ""+StartFragment.teamNumber.getText();
-                                results[2] = ""+AutoFragment.hanging.isChecked()+"";
-                                results[3] = ""+AutoFragment.goldCube.isChecked();
-                                results[4] = AutoFragment.teamIcon.isChecked()+"";
-                                results[5] = AutoFragment.parkedCrater.isChecked()+"";
-                                results[6] = "" + ((TeleOpFragment.goldNum!=null) ? TeleOpFragment.goldNum.getText(): 0);
-                                results[7] = "" + ((TeleOpFragment.silverNum!=null) ? TeleOpFragment.silverNum.getText(): 0);
-                                results[8] = "" + ((TeleOpFragment.depotNum!=null) ? TeleOpFragment.depotNum.getText().toString() : 0);
-                                results[9] = (TeleOpFragment.endPos!=null) ? TeleOpFragment.endPos.getSelectedItem().toString() : "Nothing";
+                                results[2] = ""+AutoFragment.foundation.isChecked();
+                                results[3] = ""+AutoFragment.parked.isChecked();
+                                results[4] = "" + ((AutoFragment.skyStone!=null) ? AutoFragment.skyStone.getText():0);
+                                results[5] = "" + ((AutoFragment.regStone!=null) ? AutoFragment.regStone.getText():0);
+                                results[6] = "" + ((TeleOpFragment.underBridge!=null) ? TeleOpFragment.underBridge.getText() : 0);
+                                results[7] = "" + ((TeleOpFragment.onFoundation!=null) ? TeleOpFragment.onFoundation.getText(): 0);
+                                results[8] = "" + ((TeleOpFragment.tallestHeight!=null) ? TeleOpFragment.tallestHeight.getText() : 0);
+                                results[9] = ""+TeleOpFragment.capped.isChecked();
+                                results[10] = ""+TeleOpFragment.foundationMoved.isChecked();
+                                results[11] = ""+TeleOpFragment.buildingPark.isChecked();
+
 
                                 if(results[0]!="" && results[1]!="") {
                                     Database.getInstance().commitToDatabase(results);
