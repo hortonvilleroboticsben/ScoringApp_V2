@@ -19,9 +19,9 @@ public class TeleOpFragment extends TitledFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
 
-        capped = v.findViewById(R.id.Capped);
-        foundationMoved = v.findViewById(R.id.FoundationMove);
-        buildingPark = v.findViewById(R.id.ParkedBuilding);
+        capped = (Switch)v.findViewById(R.id.Capped);
+        foundationMoved = (Switch)v.findViewById(R.id.FoundationMove);
+        buildingPark = (Switch)v.findViewById(R.id.ParkedBuilding);
 
         bridgeNum = 0;
         foundationNum = 0;

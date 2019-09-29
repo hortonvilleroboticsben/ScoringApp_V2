@@ -40,7 +40,7 @@ public class Database {
             elementEntry += s + "','";
         }
         elementEntry = elementEntry.substring(0, elementEntry.length() - 2) + ")";
-//        Log.d("Database",elementEntry);
+        Log.d("Database",elementEntry);
         database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,moveFoundation,skyStones,regStones,parkedBridge,stonesBridge,onFoundation,tallestHeight,capped,retFoundation,parkedBuilding) VALUES " + elementEntry);
 
     }

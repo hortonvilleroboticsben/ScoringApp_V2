@@ -46,30 +46,34 @@ public class PushToGoogleService extends IntentService {
                 SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
                 String sheetID = pM.getString(getString(R.string.sheetID), "");
 
-                URL url = new URL("https://script.google.com/macros/s/AKfycby4wYSNSdmSdS1iEHzfTnMXbm1625COAko6zQAw5tXgeJCiYevi/exec");
+
                 JSONObject postDataParams = new JSONObject();
                 String id = sheetID;
 
                 String[] parameters = {"matchID","matchNumber", "teamNumber", "moveFoundation", "skyStones", "regStones", "parkedBridge", "stonesBridge", "onFoundation", "tallestTower", "capped","retFoundation","parkedBuilding"};
 
-                for (int i = 0; i < parameters.length; i++) postDataParams.put(parameters[i], c.getString(i));
+                for (int i = 0; i < parameters.length; i++){
+                    postDataParams.put(parameters[i], c.getString(i));
+                }
                 postDataParams.put("id", id);
+
+                URL url = new URL("https://script.google.com/macros/s/AKfycbxL_zBpL-iHBCJZ7Vz3qc4ZOOvEPMP_38Fk0vsTKCdxHc3HaFkb/dev?"+getPostDataString(postDataParams));
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
                 conn.setConnectTimeout(15000 /* milliseconds */);
-                conn.setRequestMethod("POST");
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
+                conn.setRequestMethod("GET");
+                //conn.setDoInput(true);
+                //conn.setDoOutput(true);
 
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-                writer.write(getPostDataString(postDataParams));
-                Log.d(TAG,getPostDataString(postDataParams));
-                writer.flush();
-                writer.close();
-                os.close();
+//                OutputStream os = conn.getOutputStream();
+//                BufferedWriter writer = new BufferedWriter(
+//                        new OutputStreamWriter(os, "UTF-8"));
+//                writer.write(getPostDataString(postDataParams));
+//                Log.d(TAG,getPostDataString(postDataParams));
+//                writer.flush();
+//                writer.close();
+//                os.close();
 
                 int responseCode = conn.getResponseCode();
 
@@ -81,11 +85,11 @@ public class PushToGoogleService extends IntentService {
 
                     while ((line = in.readLine()) != null) {
 
-                        sb.append(line);
-                        break;
-                    }
-
-                    in.close();
+                    sb.append(line);
+                    break;
+                }
+                Log.d(TAG,""+sb);
+                in.close();
 
                    Database.getInstance().database.execSQL("DELETE FROM Matches WHERE id='"+c.getString(0)+"'");
 
@@ -95,19 +99,19 @@ public class PushToGoogleService extends IntentService {
                     s.schedule(new Runnable() {
                         @Override
                         public void run() {
-                            Log.e("PushToGoogleService","DIDNT WORK");
+                            Log.e("PushToGoogleService","DIDNT WORK, else");
                             Toast.makeText(getApplicationContext(), "DIDNT WORK", Toast.LENGTH_SHORT).show();
                             startService(new Intent(me, me.getClass()));
                         }
                     }, 10, TimeUnit.SECONDS);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.d("E/PushToGoogleService",e.getMessage());
                 ScheduledThreadPoolExecutor s = new ScheduledThreadPoolExecutor(1);
                 s.schedule(new Runnable() {
                     @Override
                     public void run() {
-                        Log.e("PushToGoogleService","DIDNT WORK");
+                        Log.e("PushToGoogleService","DIDNT WORK, catch");
                         Toast.makeText(getApplicationContext(), "DIDNT WORK", Toast.LENGTH_SHORT).show();
                         startService(new Intent(me, me.getClass()));
                     }

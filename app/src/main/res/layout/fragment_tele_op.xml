@@ -7,166 +7,177 @@
     tools:context=".TeleOpFragment"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TeleOpTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="5dp"
-        android:gravity="center"
-        android:text="TeleOp"
-        android:textSize="38sp"
-        tools:textAlignment="center"
-        tools:textColor="@android:color/black" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/StoneUnderBridge"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:gravity="center"
-        android:text="Stones Under Bridge"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="27sp" />
-
-    <LinearLayout
-        android:id="@+id/StoneUnderBridgeSection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/StoneUnderBridgeDecrease"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="-" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/StoneUnderBridge_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:text="0"
-            android:textSize="34sp" />
+            <TextView
+                android:id="@+id/TeleOpTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="TeleOp"
+                android:textSize="36sp"
+                tools:textAlignment="center"
+                tools:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/StoneUnderBridgeIncrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/BlocksFoundation"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Blocks on Foundation"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/BlocksFoundation"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:gravity="center"
-        android:text="Blocks on Foundation"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="27sp" />
+            <LinearLayout
+                android:id="@+id/BlocksSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/BlocksSection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal">
+                <Button
+                    android:id="@+id/BlocksDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
 
-        <Button
-            android:id="@+id/BlocksDecrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-" />
+                <TextView
+                    android:id="@+id/Blocks_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="0"
+                    android:textSize="34sp" />
 
-        <TextView
-            android:id="@+id/Blocks_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:text="0"
-            android:textSize="34sp" />
+                <Button
+                    android:id="@+id/BlocksIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/BlocksIncrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/TallTower"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Tallest Height Reached"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
+            <LinearLayout
+                android:id="@+id/TowerSection"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/TallTower"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="Tallest Height Reached"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="27sp" />
+                <Button
+                    android:id="@+id/TowerDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
 
-    <LinearLayout
-        android:id="@+id/TowerSection"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Tower_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="0"
+                    android:textSize="34sp" />
 
-        <Button
-            android:id="@+id/TowerDecrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-" />
+                <Button
+                    android:id="@+id/TowerIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
 
-        <TextView
-            android:id="@+id/Tower_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:text="0"
-            android:textSize="34sp" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/TowerIncrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+" />
+            <TextView
+                android:id="@+id/StoneUnderBridge"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Stones Under Bridge"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/StoneUnderBridgeSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/EndGameText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="Endgame"
-        android:textSize="38sp"
-        tools:textColor="@android:color/black" />
+                <Button
+                    android:id="@+id/StoneUnderBridgeDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-" />
 
-    <Switch
-        android:id="@+id/Capped"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Capped"
-        android:textSize="27sp" />
+                <TextView
+                    android:id="@+id/StoneUnderBridge_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="0"
+                    android:textSize="34sp" />
 
-    <Switch
-        android:id="@+id/FoundationMove"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="Moved Foundation"
-        android:textSize="27dp" />
+                <Button
+                    android:id="@+id/StoneUnderBridgeIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+            </LinearLayout>
 
-    <Switch
-        android:id="@+id/ParkedBuilding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Parked In Building Site"
-        android:textSize="27dp" />
+            <TextView
+                android:id="@+id/EndGameText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Endgame"
+                android:textSize="36sp"
+                tools:textColor="@android:color/black" />
+
+            <Switch
+                android:id="@+id/Capped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capped"
+                android:textSize="24sp" />
+
+            <Switch
+                android:id="@+id/FoundationMove"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Moved Foundation"
+                android:textSize="24sp" />
+
+            <Switch
+                android:id="@+id/ParkedBuilding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parked In Building Site"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

@@ -11,25 +11,25 @@
     <TextView
         android:id="@+id/AutonomousTitle"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Autonomous"
-        android:textSize="48sp"
+        android:textSize="36sp"
         tools:textColor="@android:color/black" />
 
     <Switch
         android:id="@+id/FoundationSwitch"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="25dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="20dp"
         android:text="Moved Foundation"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/SkyStone"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="SkyStones"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:id="@+id/SkySection"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:text="Stones"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:id="@+id/StoneSection"
@@ -117,7 +117,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="15dp"
         android:text="Parked Under Bridge"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
 
 </LinearLayout>
