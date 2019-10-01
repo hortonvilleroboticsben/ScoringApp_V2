@@ -1,5 +1,8 @@
 package com.hortonvillerobotics.scoringapp_v2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +11,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TeleOpFragment extends TitledFragment {
 
     public static Switch capped,foundationMoved,buildingPark;
     public static TextView underBridge, onFoundation, tallestHeight;
-    public int bridgeNum, foundationNum, heightNum;
+    public static int bridgeNum = 0, foundationNum = 0, heightNum = 0;
+    public String[] results = new String[12];
+    Button submit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,10 +28,6 @@ public class TeleOpFragment extends TitledFragment {
         capped = (Switch)v.findViewById(R.id.Capped);
         foundationMoved = (Switch)v.findViewById(R.id.FoundationMove);
         buildingPark = (Switch)v.findViewById(R.id.ParkedBuilding);
-
-        bridgeNum = 0;
-        foundationNum = 0;
-        heightNum = 0;
 
         Button bridgeDown = v.findViewById(R.id.StoneUnderBridgeDecrease);
         bridgeDown.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +61,9 @@ public class TeleOpFragment extends TitledFragment {
             public void onClick(View view) {
                 if(bridgeNum <= 0){
                     bridgeNum = 0;
-                    underBridge.setText(bridgeNum+"");
+                    onFoundation.setText(bridgeNum+"");
                 } else {
-                    underBridge.setText(--bridgeNum+ "");
+                    onFoundation.setText(--bridgeNum+ "");
                 }
             }
         });

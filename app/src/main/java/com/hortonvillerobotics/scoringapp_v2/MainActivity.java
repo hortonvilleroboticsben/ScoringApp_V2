@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.support.annotation.IdRes;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -29,7 +30,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
+    static StartFragment startFragment = new StartFragment();
+    static AutoFragment autoFragment = new AutoFragment();
+    static TeleOpFragment teleOpFragment = new TeleOpFragment();
+    static TitledFragment[] views = {startFragment, autoFragment, teleOpFragment};
     private ViewPager mViewPager;
     public String[] results = new String[12];
     Button submit;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
-        submit = (Button)findViewById(R.id.SubmitButton);
+        submit = (Button)findViewById(R.id.submitButton);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //TODO: ENTER ALL POSSIBLE PARAMETERS THAT ARE IN THE GOOGLE SCRIPT
+                mViewPager.setCurrentItem(2,true);
 
                 final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Submit Alert");
@@ -181,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position+1);
         }
 
         @Override

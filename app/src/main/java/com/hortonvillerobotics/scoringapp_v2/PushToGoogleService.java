@@ -40,7 +40,7 @@ public class PushToGoogleService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable final Intent intent) {
         Cursor c = Database.getInstance().database.query("Matches", null, null, null, null, null, null);
-        while (c.getPosition() < c.getCount()) {
+        while (c.getPosition() < c.getCount()-1) {
             c.moveToNext();
             try {
                 SharedPreferences pM = PreferenceManager.getDefaultSharedPreferences(this);
@@ -88,7 +88,7 @@ public class PushToGoogleService extends IntentService {
                     sb.append(line);
                     break;
                 }
-                Log.d(TAG,""+sb);
+                //Log.d(TAG,""+sb);
                 in.close();
 
                    Database.getInstance().database.execSQL("DELETE FROM Matches WHERE id='"+c.getString(0)+"'");
