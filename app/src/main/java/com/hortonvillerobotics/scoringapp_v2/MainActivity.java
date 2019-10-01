@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
         }
 
+
+        //lp
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         getSupportActionBar().setTitle("Hortonville Robotics Scoring App");
         getSupportActionBar().setSubtitle("Team #6981");
