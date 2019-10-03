@@ -17,14 +17,11 @@ public class TeleOpFragment extends TitledFragment {
 
     public static Switch capped,foundationMoved,buildingPark;
     public static TextView underBridge, onFoundation, tallestHeight;
-    public static int bridgeNum = 0, foundationNum = 0, heightNum = 0;
-    public String[] results = new String[12];
-    Button submit;
+    public int bridgeNum = 0, foundationNum = 0, heightNum = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
-
         capped = (Switch)v.findViewById(R.id.Capped);
         foundationMoved = (Switch)v.findViewById(R.id.FoundationMove);
         buildingPark = (Switch)v.findViewById(R.id.ParkedBuilding);
@@ -59,12 +56,14 @@ public class TeleOpFragment extends TitledFragment {
         foundDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(bridgeNum <= 0){
-                    bridgeNum = 0;
-                    onFoundation.setText(bridgeNum+"");
-                } else {
-                    onFoundation.setText(--bridgeNum+ "");
-                }
+               bridgeNum = bridgeNum -1;
+                onFoundation.setText("hElLo");
+                //                if(bridgeNum <= 0){
+//                    bridgeNum = 0;
+//                    onFoundation.setText(bridgeNum+"");
+//                } else {
+//                    onFoundation.setText(--bridgeNum+ "");
+//                }
             }
         });
 

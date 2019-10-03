@@ -30,10 +30,10 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    static StartFragment startFragment = new StartFragment();
-    static AutoFragment autoFragment = new AutoFragment();
-    static TeleOpFragment teleOpFragment = new TeleOpFragment();
-    static TitledFragment[] views = {startFragment, autoFragment, teleOpFragment};
+    static TitledFragment[] views = {null, null, null};
+    private static final byte START = 0;
+    private static final byte AUTO = 1;
+    private static final byte TELEOP = 2;
     private ViewPager mViewPager;
     public String[] results = new String[12];
     Button submit;
@@ -173,7 +173,22 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = views[getArguments().getInt(ARG_SECTION_NUMBER)-1].onCreateView(inflater,container,savedInstanceState);
+            TitledFragment frag = null;
+            switch(getArguments().getInt(ARG_SECTION_NUMBER)-1){
+                case START:
+                    frag = new StartFragment();
+                    views[START] = views[START] == null ? frag : views[START];
+                    break;
+                case AUTO:
+                    frag = new AutoFragment();
+                    views[AUTO] = views[AUTO] == null ? frag : views[AUTO];
+                    break;
+                case TELEOP:
+                    frag = new TeleOpFragment();
+                    views[TELEOP] = views[TELEOP] == null ? frag : views[TELEOP];
+                    break;
+            }
+            View rootView = frag.onCreateView(inflater,container,savedInstanceState);
             return rootView;
         }
     }

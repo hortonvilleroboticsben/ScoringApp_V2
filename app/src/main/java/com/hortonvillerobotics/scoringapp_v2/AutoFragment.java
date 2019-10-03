@@ -29,7 +29,7 @@ public class AutoFragment extends TitledFragment {
             public void onClick(View view) {
                 if(skyNum <= 0){
                     skyNum = 0;
-                    skyStone.setText(skyNum+"");
+                    skyStone.setText("0");
                 } else {
                     skyStone.setText(--skyNum + "");
                 }
@@ -40,9 +40,9 @@ public class AutoFragment extends TitledFragment {
         skyUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(skyNum >= 50){
-                    skyNum = 50;
-                    skyStone.setText(skyNum+"");
+                if(skyNum >= 2){
+                    skyNum = 2;
+                    skyStone.setText("2");
                 } else {
                     skyStone.setText(++skyNum + "");
                 }
@@ -55,7 +55,7 @@ public class AutoFragment extends TitledFragment {
             public void onClick(View view) {
                 if(regNum <= 0){
                     regNum = 0;
-                    regStone.setText(regNum+"");
+                    regStone.setText("0");
                 } else {
                     regStone.setText(--regNum + "");
                 }
@@ -68,7 +68,7 @@ public class AutoFragment extends TitledFragment {
             public void onClick(View view) {
                 if(regNum >= 50){
                     regNum = 50;
-                    regStone.setText(regNum+"");
+                    regStone.setText("50");
                 } else {
                     regStone.setText(++regNum + "");
                 }

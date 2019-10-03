@@ -23,7 +23,8 @@ public class Database {
         database = SQLiteDatabase.openOrCreateDatabase(Environment.getExternalStorageDirectory().getPath() + "/matchRecords.db", null);
 
         try {
-            database.execSQL("CREATE TABLE IF NOT EXISTS Matches (id VARCHAR(255), matchNum VARCHAR(255), teamNum VARCHAR(255), moveFoundation VARCHAR(255), skyStones VARCHAR(255), regStones VARCHAR(255), parkedBridge VARCHAR(255), stonesBridge VARCHAR(255), onFoundation VARCHAR(255), tallestHeight VARCHAR(255), capped VARCHAR(255), retFoundation VARCHAR(255),parkedBuilding VARCHAR(255))");
+            database.execSQL("DROP TABLE IF EXISTS Matches");
+            database.execSQL("CREATE TABLE Matches (id VARCHAR(255), matchNum VARCHAR(255), teamNum VARCHAR(255), moveFoundation VARCHAR(255), parkedBridge VARCHAR(255), regStones VARCHAR(255), skyStones VARCHAR(255), stonesBridge VARCHAR(255), onFoundation VARCHAR(255), tallestHeight VARCHAR(255), capped VARCHAR(255), retFoundation VARCHAR(255),parkedBuilding VARCHAR(255))");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,13 +36,13 @@ public class Database {
 
     public void commitToDatabase(String[] args) {
         int entryHash = (("" + args[0]) + args[1]).hashCode();
-        String elementEntry = "('"+entryHash+"','";
+        String elementEntry = "(\""+entryHash+"\",\"";
         for (String s : args) {
-            elementEntry += s + "','";
+            elementEntry += s + "\",\"";
         }
         elementEntry = elementEntry.substring(0, elementEntry.length() - 2) + ")";
         Log.d("Database",elementEntry);
-        database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,moveFoundation,skyStones,regStones,parkedBridge,stonesBridge,onFoundation,tallestHeight,capped,retFoundation,parkedBuilding) VALUES " + elementEntry);
+        database.execSQL("INSERT INTO Matches (id,matchNum,teamNum,moveFoundation,parkedBridge,regStones,skyStones,stonesBridge,onFoundation,tallestHeight,capped,retFoundation,parkedBuilding) VALUES " + elementEntry);
 
     }
 }
