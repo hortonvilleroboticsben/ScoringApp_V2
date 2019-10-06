@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.service.quicksettings.Tile;
 import android.support.annotation.IdRes;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.ActivityCompat;
@@ -30,13 +31,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    static TitledFragment[] views = {null, null, null};
-    private static final byte START = 0;
-    private static final byte AUTO = 1;
-    private static final byte TELEOP = 2;
+    static TitledFragment[] views = {new StartFragment(), new AutoFragment(), new TeleOpFragment()};
     private ViewPager mViewPager;
     public String[] results = new String[12];
     Button submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,11 +111,13 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(results[0]!="" && results[1]!="") {
                                     Database.getInstance().commitToDatabase(results);
-
-
+                                    AutoFragment.skyNum = 0;
+                                    AutoFragment.regNum = 0;
+                                    TeleOpFragment.bridgeNum = 0;
+                                    TeleOpFragment.heightNum = 0;
+                                    TeleOpFragment.foundationNum = 0;
                                     Intent serviceIntent = new Intent(MainActivity.this, PushToGoogleService.class);
                                     startService(serviceIntent);
-
                                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                                     finish();
                                     startActivity(getIntent());
@@ -173,22 +174,22 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            TitledFragment frag = null;
-            switch(getArguments().getInt(ARG_SECTION_NUMBER)-1){
-                case START:
-                    frag = new StartFragment();
-                    views[START] = views[START] == null ? frag : views[START];
-                    break;
-                case AUTO:
-                    frag = new AutoFragment();
-                    views[AUTO] = views[AUTO] == null ? frag : views[AUTO];
-                    break;
-                case TELEOP:
-                    frag = new TeleOpFragment();
-                    views[TELEOP] = views[TELEOP] == null ? frag : views[TELEOP];
-                    break;
-            }
-            View rootView = frag.onCreateView(inflater,container,savedInstanceState);
+//            TitledFragment frag = null;
+//            switch(getArguments().getInt(ARG_SECTION_NUMBER)-1){
+//                case START:
+//                    frag = new StartFragment();
+//                    views[START] = views[START] == null ? frag : views[START];
+//                    break;
+//                case AUTO:
+//                    frag = new AutoFragment();
+//                    views[AUTO] = views[AUTO] == null ? frag : views[AUTO];
+//                    break;
+//                case TELEOP:
+//                    frag = new TeleOpFragment();
+//                    views[TELEOP] = views[TELEOP] == null ? frag : views[TELEOP];
+//                    break;
+//            }
+            View rootView = views[getArguments().getInt(ARG_SECTION_NUMBER)-1].onCreateView(inflater,container,savedInstanceState);
             return rootView;
         }
     }

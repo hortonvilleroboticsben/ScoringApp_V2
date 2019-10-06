@@ -13,18 +13,27 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class TeleOpFragment extends TitledFragment {
 
     public static Switch capped,foundationMoved,buildingPark;
     public static TextView underBridge, onFoundation, tallestHeight;
-    public int bridgeNum = 0, foundationNum = 0, heightNum = 0;
+    public static int bridgeNum = 0, foundationNum = 0, heightNum = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tele_op, container, false);
+        underBridge = (TextView)v.findViewById(R.id.StoneUnderBridge_count);
+        onFoundation = (TextView)v.findViewById(R.id.Blocks_count);
+        tallestHeight = (TextView)v.findViewById(R.id.Tower_count);
         capped = (Switch)v.findViewById(R.id.Capped);
         foundationMoved = (Switch)v.findViewById(R.id.FoundationMove);
         buildingPark = (Switch)v.findViewById(R.id.ParkedBuilding);
+
+        underBridge.setText(bridgeNum+"");
+        onFoundation.setText(foundationNum+"");
+        tallestHeight.setText(heightNum+"");
 
         Button bridgeDown = v.findViewById(R.id.StoneUnderBridgeDecrease);
         bridgeDown.setOnClickListener(new View.OnClickListener() {
@@ -56,14 +65,12 @@ public class TeleOpFragment extends TitledFragment {
         foundDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               bridgeNum = bridgeNum -1;
-                onFoundation.setText("hElLo");
-                //                if(bridgeNum <= 0){
-//                    bridgeNum = 0;
-//                    onFoundation.setText(bridgeNum+"");
-//                } else {
-//                    onFoundation.setText(--bridgeNum+ "");
-//                }
+               if(bridgeNum <= 0){
+                    bridgeNum = 0;
+                    onFoundation.setText(bridgeNum+"");
+               } else {
+                    onFoundation.setText(--bridgeNum+ "");
+               }
             }
         });
 

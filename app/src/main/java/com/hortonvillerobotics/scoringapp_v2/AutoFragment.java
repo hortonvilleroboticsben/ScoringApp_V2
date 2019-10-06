@@ -2,6 +2,7 @@ package com.hortonvillerobotics.scoringapp_v2;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +14,21 @@ public class AutoFragment extends TitledFragment {
 
     public static Switch foundation, parked;
     public static TextView skyStone,regStone;
-    public int skyNum = 0,regNum = 0;
+    //MainActivity ma = new MainActivity();
+    public static int skyNum = 0,regNum = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_auto, container, false);
 
+        skyStone = (TextView)v.findViewById(R.id.sky_count);
+        regStone = (TextView)v.findViewById(R.id.stone_count);
         foundation = (Switch)v.findViewById(R.id.FoundationSwitch);
         parked = (Switch)v.findViewById(R.id.ParkedBridge);
+
+        skyStone.setText(skyNum+"");
+        regStone.setText(regNum+"");
 
         Button skyDown = v.findViewById(R.id.skyDecrease);
         skyDown.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +64,7 @@ public class AutoFragment extends TitledFragment {
                     regNum = 0;
                     regStone.setText("0");
                 } else {
+
                     regStone.setText(--regNum + "");
                 }
             }
